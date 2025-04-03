@@ -8,7 +8,7 @@ Download Paper from [https://papermc.io/downloads/paper](https://papermc.io/down
 
 # Create the boot.sh file with the server startup command
 touch boot.sh
-echo "java -Xmx8G -Xms8G -jar paper-1.21.4-222.jar" > boot.sh
+echo "java -Xmx8G -Xms8G -jar paper-xxxxxx.jar" > boot.sh
 
 # Grant execute permission to boot.sh
 chmod +x boot.sh
