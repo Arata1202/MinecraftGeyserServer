@@ -1,20 +1,13 @@
 make jar
-sleep 30
-
-make reboot
-sleep 30
+sleep 10
 
 make edit
-sleep 5
+sleep 10
 
 make mv
-sleep 5
-
-make reboot
-sleep 30
-make stop
+sleep 10
 
 make edit
-sleep 5
+sleep 10
 
 make boot
