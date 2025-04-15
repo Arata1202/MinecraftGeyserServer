@@ -6,6 +6,9 @@ chmod:
 	@chmod +x .bin/mv/*.sh
 	@chmod +x .bin/stop/*.sh
 
+up:
+	@docker compose up --build
+
 reboot:
 	.bin/reboot.sh
 
@@ -29,4 +32,4 @@ mv:
 stop:
 	.bin/stop/server.sh
 
-.PHONY: chmod reboot boot jar edit mv stop
+.PHONY: chmod up reboot boot jar edit mv stop

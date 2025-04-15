@@ -1,5 +1,7 @@
 FILE="server.properties"
 
 if [ -f "$FILE" ]; then
-  sed -i 's/enforce-secure-profile=true/enforce-secure-profile=false/' "$FILE"
+  if grep -q "enforce-secure-profile=true" "$FILE"; then
+    sed -i 's/enforce-secure-profile=true/enforce-secure-profile=false/' "$FILE"
+  fi
 fi

@@ -7,4 +7,5 @@ if [ ! -f "./Paper.jar" ]; then
 
   sleep 10
   make reboot
+  sleep 10
 fi
