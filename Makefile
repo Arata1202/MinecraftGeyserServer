@@ -1,12 +1,13 @@
 chmod:
+	@chmod +x .docker/*.sh
 	@chmod +x .bin/*.sh
 	@chmod +x .bin/jar/*.sh
 	@chmod +x .bin/edit/*.sh
 	@chmod +x .bin/mv/*.sh
 	@chmod +x .bin/stop/*.sh
 
-reset:
-	.bin/reset.sh
+reboot:
+	.bin/reboot.sh
 
 boot:
 	.bin/boot.sh
@@ -28,4 +29,4 @@ mv:
 stop:
 	.bin/stop/server.sh
 
-.PHONY: chmod boot jar edit mv stop
+.PHONY: chmod reboot boot jar edit mv stop

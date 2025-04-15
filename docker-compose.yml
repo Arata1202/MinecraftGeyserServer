@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  minecraft:
+    container_name: minecraft
+    build:
+      context: .
+      dockerfile: ./.docker/Dockerfile
+    volumes:
+      - ./:/server
+    working_dir: '/server'
+    ports:
+      - "19132:19132"
+      - "25565:25565"

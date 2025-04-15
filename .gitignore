@@ -2,9 +2,15 @@
 !.gitignore
 !README.md
 !Makefile
+!docker-compose.yml
 
 !.bin/
+!reboot.sh
 !boot.sh
+
+!.docker/
+!Dockerfile
+!entrypoint.sh
 
 !jar/
 !floodgate.sh
