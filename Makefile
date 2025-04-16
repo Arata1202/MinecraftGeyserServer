@@ -1,10 +1,14 @@
 chmod:
 	@chmod +x .docker/*.sh
 	@chmod +x .bin/*.sh
-	@chmod +x .bin/jar/*.sh
 	@chmod +x .bin/edit/*.sh
+	@chmod +x .bin/edit/cmd/*.sh
+	@chmod +x .bin/jar/*.sh
+	@chmod +x .bin/jar/cmd/*.sh
 	@chmod +x .bin/mv/*.sh
+	@chmod +x .bin/mv/cmd/*.sh
 	@chmod +x .bin/stop/*.sh
+	@chmod +x .bin/stop/cmd/*.sh
 
 up:
 	@docker compose up --build
