@@ -3,7 +3,7 @@ if [ ! -f "./plugins/Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Geyser-Spigot.
 
   make reboot
 
-  while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] && [ ! -f "server.properties" ]; do
+  while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
     sleep 1
   done
 
