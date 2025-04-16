@@ -8,5 +8,4 @@ if [ ! -f "./plugins/Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Geyser-Spigot.
   done
 
   make stop
-  sleep 10
 fi
