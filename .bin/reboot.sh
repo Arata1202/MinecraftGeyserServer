@@ -1,1 +1,1 @@
-java -Xmx4G -Xms4G -jar paper.jar &
+java -Xmx4G -Xms4G -jar Paper.jar &
