@@ -28,7 +28,4 @@ edit:
 mv:
 	.bin/mv/entrypoint.sh
 
-stop:
-	.bin/stop/entrypoint.sh
-
-.PHONY: chmod up reboot boot jar edit mv stop
+.PHONY: chmod up reboot boot jar edit mv

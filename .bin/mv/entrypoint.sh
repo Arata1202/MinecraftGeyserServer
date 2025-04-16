@@ -6,6 +6,4 @@ if [ ! -f "./plugins/Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Geyser-Spigot.
   while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
     sleep 1
   done
-
-  make stop
 fi
