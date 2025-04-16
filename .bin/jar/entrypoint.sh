@@ -5,5 +5,8 @@ if [ ! -f "./Paper.jar" ]; then
   ./.bin/jar/cmd/via-version.sh
 
   make reboot
-  sleep 10
+
+  while [ ! -f "eula.txt" ]; do
+    sleep 1
+  done
 fi
