@@ -19,9 +19,7 @@ jar:
 	.bin/jar/entrypoint.sh
 
 edit:
-	.bin/edit/eula.sh
-	.bin/edit/geyser-spigot.sh
-	.bin/edit/server-properties.sh
+	.bin/edit/entrypoint.sh
 
 mv:
 	.bin/mv/jar.sh
