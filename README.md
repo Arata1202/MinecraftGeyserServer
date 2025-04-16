@@ -7,7 +7,9 @@
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
-# Install
-make chmod
+# Setup server
+make setup
+
+# Start server
 make up
 ```

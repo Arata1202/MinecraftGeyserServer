@@ -7,11 +7,12 @@ chmod:
 	@chmod +x .bin/jar/cmd/*.sh
 	@chmod +x .bin/mv/*.sh
 	@chmod +x .bin/mv/cmd/*.sh
-	@chmod +x .bin/stop/*.sh
-	@chmod +x .bin/stop/cmd/*.sh
+
+setup: chmod
+	@docker compose up --build
 
 up:
-	@docker compose up --build
+	@docker compose up
 
 reboot:
 	.bin/reboot.sh

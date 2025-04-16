@@ -9,5 +9,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run Tests
         run: |
-          make chmod
-          make up
+          make setup
