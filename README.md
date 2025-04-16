@@ -1,3 +1,10 @@
+<div align="right">
+
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Arata1202/MinecraftGeyserServer/deploy.yml)
+![GitHub License](https://img.shields.io/github/license/Arata1202/MinecraftGeyserServer)
+
+</div>
+
 ## Getting Started
 
 ### Install using Docker
