@@ -16,10 +16,7 @@ boot:
 	.bin/boot.sh
 
 jar:
-	.bin/jar/floodgate.sh
-	.bin/jar/geyser.sh
-	.bin/jar/paper.sh
-	.bin/jar/via-version.sh
+	.bin/jar/entrypoint.sh
 
 edit:
 	.bin/edit/eula.sh

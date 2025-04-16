@@ -4,13 +4,15 @@
 !Makefile
 !docker-compose.yml
 
+!cmd/
+!entrypoint.sh
+
 !.bin/
 !reboot.sh
 !boot.sh
 
 !.docker/
 !Dockerfile
-!entrypoint.sh
 
 !jar/
 !floodgate.sh
