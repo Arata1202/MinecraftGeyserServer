@@ -22,9 +22,9 @@ edit:
 	.bin/edit/entrypoint.sh
 
 mv:
-	.bin/mv/jar.sh
+	.bin/mv/entrypoint.sh
 
 stop:
-	.bin/stop/server.sh
+	.bin/stop/entrypoint.sh
 
 .PHONY: chmod up reboot boot jar edit mv stop
