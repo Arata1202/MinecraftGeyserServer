@@ -16,8 +16,7 @@
 
 !.github/
 !workflows/
-!test.yml
-!ec2_setup.yml
+!deploy.yml
 
 !jar/
 !floodgate.sh
