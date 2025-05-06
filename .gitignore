@@ -21,6 +21,11 @@
 !workflows/
 !deploy.yml
 
+!.terraform/
+!main.tf
+!ec2.tf
+
+
 !jar/
 !floodgate.sh
 !geyser.sh
