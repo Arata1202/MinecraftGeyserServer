@@ -7,16 +7,34 @@
 
 ## Getting Started
 
-### Install using Docker
+### Local Setup with Docker
 
 ```bash
 # Clone repository
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
-# Setup server
+# Set up server
 make setup
 
 # Start server
 make up
+```
+
+### Setup on AWS EC2
+
+```bash
+# Clone repository
+git clone git@github.com:Arata1202/MinecraftGeyserServer.git
+cd MinecraftGeyserServer
+
+# Set up EC2
+chmod +x ./.aws/ec2.sh
+./.aws/ec2.sh
+
+# Set up server
+sudo make setup
+
+# Start server
+sudo make up
 ```
