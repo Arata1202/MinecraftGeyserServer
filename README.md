@@ -21,14 +21,22 @@ make setup
 make up
 ```
 
-### Setup on AWS EC2
+### Create Resources on AWS with Terraform
 
 ```bash
+# Clone repository
+git clone git@github.com:Arata1202/MinecraftGeyserServer.git
+cd MinecraftGeyserServer
+
 # Create Resources
 make init
 make plan
 make apply
+```
 
+### Setup on AWS EC2
+
+```bash
 # Clone repository
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
