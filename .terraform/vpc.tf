@@ -1,7 +1,3 @@
-data "aws_availability_zones" "available" {
-  state = "available"
-}
-
 resource "aws_vpc" "minecraft_vpc" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_support   = true
@@ -23,7 +19,7 @@ resource "aws_internet_gateway" "minecraft_igw" {
 resource "aws_subnet" "minecraft_public_subnet_1" {
   vpc_id                  = aws_vpc.minecraft_vpc.id
   cidr_block              = "10.0.0.0/20"
-  availability_zone       = data.aws_availability_zones.available.names[0]
+  availability_zone       = "ap-northeast-1a"
   map_public_ip_on_launch = true
 
   tags = {
@@ -45,7 +41,7 @@ resource "aws_subnet" "minecraft_public_subnet_2" {
 resource "aws_subnet" "minecraft_private_subnet_1" {
   vpc_id            = aws_vpc.minecraft_vpc.id
   cidr_block        = "10.0.128.0/20"
-  availability_zone = data.aws_availability_zones.available.names[0]
+  availability_zone = "ap-northeast-1a"
 
   tags = {
     Name = "minecraft_private_subnet_1"
