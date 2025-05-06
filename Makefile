@@ -9,10 +9,10 @@ chmod:
 	@chmod +x .bin/mv/cmd/*.sh
 
 setup: chmod
-	@docker compose up --build
+	@docker compose up -d --build
 
 up:
-	@docker compose up
+	@docker compose up -d
 
 reboot:
 	.bin/reboot.sh
