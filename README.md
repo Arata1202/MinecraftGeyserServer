@@ -21,7 +21,7 @@ make setup
 make up
 ```
 
-### Create Resources on AWS with Terraform
+### Create Resources on AWS EC2 with Terraform
 
 ```bash
 # Clone repository
