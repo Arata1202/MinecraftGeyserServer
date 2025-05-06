@@ -24,12 +24,16 @@ make up
 ### Setup on AWS EC2
 
 ```bash
+# Create Resources
+make init
+make plan
+make apply
+
 # Clone repository
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
 # Set up EC2
-chmod +x ./.aws/ec2.sh
 ./.aws/ec2.sh
 
 # Set up server
