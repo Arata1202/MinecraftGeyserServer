@@ -8,4 +8,4 @@ make mv
 
 make edit
 
-make boot
+exec java -Xmx2G -Xms2G -jar Paper.jar
