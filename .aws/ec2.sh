@@ -1,3 +1,4 @@
+sudo chown -R ubuntu:ubuntu .
 sudo apt update
 sudo apt install -y ca-certificates curl gnupg make
 sudo install -m 0755 -d /etc/apt/keyrings
