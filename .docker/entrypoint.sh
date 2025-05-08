@@ -7,3 +7,5 @@ make edit
 make mv
 
 make edit
+
+make boot
