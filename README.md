@@ -17,6 +17,9 @@ cd MinecraftGeyserServer
 # Set up server
 make setup
 
+# Set up repository
+sudo make git
+
 # Start server
 make up
 ```
@@ -42,13 +45,13 @@ git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
 # Set up EC2
-./.aws/ec2.sh
+sudo make ec2
 
 # Set up server
 sudo make setup
 
 # Set up repository
-./.aws/git.sh
+sudo make git
 
 # Start server
 sudo make run
