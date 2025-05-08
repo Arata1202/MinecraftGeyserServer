@@ -26,7 +26,6 @@
 !ec2.tf
 !vpc.tf
 
-
 !jar/
 !floodgate.sh
 !geyser.sh

@@ -29,9 +29,9 @@ git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer/.terraform
 
 # Create Resources
-make init
-make plan
-make apply
+terraform init
+terraform plan
+terraform apply
 ```
 
 ### Setup on AWS EC2

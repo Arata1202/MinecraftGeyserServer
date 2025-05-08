@@ -29,13 +29,4 @@ edit:
 mv:
 	.bin/mv/entrypoint.sh
 
-init:
-	@terraform init
-
-plan:
-	@terraform plan
-
-apply:
-	@terraform apply
-
-.PHONY: chmod up reboot boot jar edit mv init plan apply
+.PHONY: chmod up reboot boot jar edit mv
