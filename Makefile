@@ -32,4 +32,4 @@ edit:
 mv:
 	.bin/mv/entrypoint.sh
 
-.PHONY: chmod ec2 up reboot boot jar edit mv
+.PHONY: chmod run up reboot boot jar edit mv
