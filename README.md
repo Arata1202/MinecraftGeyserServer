@@ -47,6 +47,9 @@ cd MinecraftGeyserServer
 # Set up server
 sudo make setup
 
+# Set up repository
+./.aws/git.sh
+
 # Start server
-sudo make up
+sudo make run
 ```

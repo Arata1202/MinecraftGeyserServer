@@ -8,6 +8,9 @@ chmod:
 	@chmod +x .bin/mv/*.sh
 	@chmod +x .bin/mv/cmd/*.sh
 
+run:
+	@java -Xmx2G -Xms2G -jar Paper.jar
+
 setup: chmod
 	@docker compose up --build
 
@@ -29,4 +32,4 @@ edit:
 mv:
 	.bin/mv/entrypoint.sh
 
-.PHONY: chmod up reboot boot jar edit mv
+.PHONY: chmod ec2 up reboot boot jar edit mv
