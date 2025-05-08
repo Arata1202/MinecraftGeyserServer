@@ -1,6 +1,6 @@
 resource "aws_instance" "minecraft_server" {
-  ami                         = "ami-026c39f4021df9abe"
-  instance_type               = "t3a.medium"
+  ami                         = "ami-038e94aea55c0f480"
+  instance_type               = "t4g.medium"
   key_name                    = "minecraft_key"
   subnet_id                   = aws_subnet.minecraft_public_subnet_1.id
   associate_public_ip_address = true
