@@ -26,7 +26,7 @@ make up
 ```bash
 # Clone repository
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
-cd MinecraftGeyserServer
+cd MinecraftGeyserServer/.terraform
 
 # Create Resources
 make init
