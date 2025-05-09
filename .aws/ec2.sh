@@ -1,5 +1,5 @@
 sudo apt update
-sudo apt install -y ca-certificates curl gnupg make openjdk-21-jdk screen
+sudo apt install -y ca-certificates curl gnupg make
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
 echo \
