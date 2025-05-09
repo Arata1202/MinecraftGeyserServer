@@ -1,1 +1,1 @@
-screen -dmS minecraft java -Xmx2G -Xms2G -jar Paper.jar
+java -Xmx2G -Xms2G -jar Paper.jar

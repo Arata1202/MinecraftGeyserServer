@@ -4,7 +4,7 @@ setup:
 
 up:
 	@.aws/chmod.sh
-	@docker compose up
+	@docker compose up -d
 
 reboot:
 	.bin/reboot.sh
