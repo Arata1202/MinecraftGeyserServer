@@ -10,6 +10,7 @@
 !.aws/
 !ec2.sh
 !git.sh
+!chmod.sh
 
 !.bin/
 !reboot.sh

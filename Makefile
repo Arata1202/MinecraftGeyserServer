@@ -15,9 +15,11 @@ screen:
 	@screen -r minecraft
 
 setup: chmod
+	@.aws/chmod.sh
 	@docker compose up --build
 
 up:
+	@.aws/chmod.sh
 	@docker compose up
 
 reboot:
