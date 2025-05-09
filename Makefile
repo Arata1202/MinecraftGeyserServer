@@ -9,7 +9,10 @@ chmod:
 	@chmod +x .bin/mv/cmd/*.sh
 
 run:
-	@java -Xmx2G -Xms2G -jar Paper.jar
+	@screen -dmS minecraft java -Xmx2G -Xms2G -jar Paper.jar
+
+stop:
+	@screen -S minecraft -X stuff "/stop$(echo \r)"
 
 setup: chmod
 	@docker compose up --build
@@ -38,4 +41,4 @@ mv:
 ec2:
 	.aws/ec2.sh
 
-.PHONY: chmod run up reboot boot git jar edit mv ec2
+.PHONY: chmod run stop up reboot boot git jar edit mv ec2
