@@ -31,6 +31,10 @@ make up
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer/.terraform
 
+# Prepare and edit variables file
+mv variables.example.tf variables.tf
+vi variables.tf
+
 # Create Resources
 terraform init
 terraform plan

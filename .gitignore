@@ -26,6 +26,7 @@
 !main.tf
 !ec2.tf
 !vpc.tf
+!variables.example.tf
 
 !jar/
 !floodgate.sh
