@@ -39,15 +39,15 @@ terraform apply
 
 ```bash
 # Clone repository
-git clone git@github.com:Arata1202/MinecraftGeyserServer.git
+git clone https://github.com/Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
 # Set up EC2
-sudo make ec2
+./.aws/ec2.sh
 
 # Set up server
-sudo make setup
+make setup
 
 # Start server
-sudo make run
+make run
 ```
