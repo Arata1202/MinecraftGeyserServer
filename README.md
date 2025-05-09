@@ -16,6 +16,9 @@ cd MinecraftGeyserServer
 
 # Set up server
 make setup
+
+# Start server
+make up
 ```
 
 ### Create Resources on AWS EC2 with Terraform
@@ -46,8 +49,8 @@ cd MinecraftGeyserServer
 ./.aws/ec2.sh
 
 # Set up server
-make setup
+sudo make setup
 
 # Start server
-make run
+sudo make up
 ```
