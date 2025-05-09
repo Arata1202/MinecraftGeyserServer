@@ -7,7 +7,7 @@
 
 ## Getting Started
 
-### Local Setup with Docker
+### Setup with Docker
 
 ```bash
 # Clone repository
@@ -16,12 +16,6 @@ cd MinecraftGeyserServer
 
 # Set up server
 make setup
-
-# Set up repository
-sudo make git
-
-# Start server
-make up
 ```
 
 ### Create Resources on AWS EC2 with Terraform
@@ -53,9 +47,6 @@ sudo make ec2
 
 # Set up server
 sudo make setup
-
-# Set up repository
-sudo make git
 
 # Start server
 sudo make run

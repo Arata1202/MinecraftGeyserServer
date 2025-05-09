@@ -26,9 +26,6 @@ reboot:
 boot:
 	.bin/boot.sh
 
-git:
-	.bin/git.sh
-
 jar:
 	.bin/jar/entrypoint.sh
 
@@ -41,4 +38,4 @@ mv:
 ec2:
 	.aws/ec2.sh
 
-.PHONY: chmod run stop up reboot boot git jar edit mv ec2
+.PHONY: chmod run stop up reboot boot jar edit mv ec2
