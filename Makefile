@@ -11,8 +11,8 @@ chmod:
 run:
 	@screen -dmS minecraft java -Xmx2G -Xms2G -jar Paper.jar
 
-stop:
-	@screen -S minecraft -X stuff "/stop$(echo \r)"
+screen:
+	@screen -r minecraft
 
 setup: chmod
 	@docker compose up --build
@@ -35,4 +35,4 @@ edit:
 mv:
 	.bin/mv/entrypoint.sh
 
-.PHONY: chmod run stop up reboot boot jar edit mv
+.PHONY: chmod run screen up reboot boot jar edit mv
