@@ -1,5 +1,5 @@
 sudo apt update
-sudo apt install -y ca-certificates curl gnupg make openjdk-21-jdk screen
+sudo apt install -y ca-certificates curl gnupg make git gcc
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
 echo \
@@ -8,4 +8,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo chown -R ubuntu:ubuntu ..
+git clone https://github.com/Tiiffi/mcrcon.git
+cd mcrcon
+make
+sudo cp mcrcon /usr/local/bin

@@ -9,11 +9,11 @@
 
 !.aws/
 !ec2.sh
-!git.sh
 
 !.bin/
 !reboot.sh
 !boot.sh
+!stop.sh
 
 !.docker/
 !Dockerfile

@@ -1,5 +1,3 @@
-make chmod
-
 make jar
 
 make edit
