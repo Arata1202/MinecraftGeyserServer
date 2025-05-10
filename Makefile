@@ -4,6 +4,9 @@ setup:
 up:
 	@docker compose up -d
 
+logs:
+	@docker compose logs minecraft
+
 reboot:
 	.bin/reboot.sh
 
@@ -19,4 +22,4 @@ edit:
 mv:
 	.bin/mv/entrypoint.sh
 
-.PHONY: up reboot boot jar edit mv
+.PHONY: setup up logs reboot boot jar edit mv
