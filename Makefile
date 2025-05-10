@@ -13,6 +13,9 @@ reboot:
 boot:
 	.bin/boot.sh
 
+stop:
+	.bin/stop.sh
+
 jar:
 	.bin/jar/entrypoint.sh
 
@@ -22,4 +25,4 @@ edit:
 mv:
 	.bin/mv/entrypoint.sh
 
-.PHONY: setup up logs reboot boot jar edit mv
+.PHONY: setup up logs reboot boot stop jar edit mv
