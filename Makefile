@@ -1,9 +1,9 @@
 setup:
-	@.aws/chmod.sh
+	@.aws/chown.sh
 	@docker compose up --build
 
 up:
-	@.aws/chmod.sh
+	@.aws/chown.sh
 	@docker compose up -d
 
 reboot:

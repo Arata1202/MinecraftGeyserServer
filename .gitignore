@@ -9,7 +9,6 @@
 
 !.aws/
 !ec2.sh
-!git.sh
 !chown.sh
 
 !.bin/
