@@ -1,9 +1,9 @@
-make jar
+.bin/jar/entrypoint.sh
 
-make edit
+.bin/edit/entrypoint.sh
 
-make mv
+.bin/mv/entrypoint.sh
 
-make edit
+.bin/edit/entrypoint.sh
 
-make boot
+.bin/boot.sh
