@@ -13,7 +13,6 @@
 !.bin/
 !reboot.sh
 !boot.sh
-!down.sh
 
 !.docker/
 !Dockerfile
