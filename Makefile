@@ -1,5 +1,5 @@
-setup:
-	@docker compose up --build
+build:
+	@docker compose build
 
 up:
 	@docker compose up -d
@@ -11,4 +11,4 @@ down:
 logs:
 	@docker compose logs minecraft
 
-.PHONY: setup up down logs
+.PHONY: build up down logs

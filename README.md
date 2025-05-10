@@ -7,23 +7,6 @@
 
 ## Getting Started
 
-### Setup with Docker
-
-```bash
-# Clone repository
-git clone git@github.com:Arata1202/MinecraftGeyserServer.git
-cd MinecraftGeyserServer
-
-# Set up server
-make setup
-
-# Start server
-make up
-
-# View logs
-make logs
-```
-
 ### Create Resources on AWS EC2 with Terraform
 
 ```bash
@@ -52,11 +35,14 @@ cd MinecraftGeyserServer
 ./.aws/ec2.sh
 
 # Set up server
-sudo make setup
+sudo make build
 
 # Start server
 sudo make up
 
 # View logs
 sudo make logs
+
+# Stop server
+sudo make down
 ```
