@@ -4,10 +4,11 @@ setup:
 up:
 	@docker compose up -d
 
+down:
+	.bin/stop.sh
+	@docker compose down
+
 logs:
 	@docker compose logs minecraft
 
-stop:
-	.bin/stop.sh
-
-.PHONY: setup up logs stop
+.PHONY: setup up down logs
