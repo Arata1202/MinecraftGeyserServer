@@ -1,9 +1,7 @@
 setup:
-	@.aws/chown.sh
 	@docker compose up --build
 
 up:
-	@.aws/chown.sh
 	@docker compose up -d
 
 reboot:

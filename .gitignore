@@ -9,7 +9,6 @@
 
 !.aws/
 !ec2.sh
-!chown.sh
 
 !.bin/
 !reboot.sh
