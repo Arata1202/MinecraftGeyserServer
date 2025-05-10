@@ -19,6 +19,9 @@ make setup
 
 # Start server
 make up
+
+# View logs
+make logs
 ```
 
 ### Create Resources on AWS EC2 with Terraform
@@ -53,4 +56,7 @@ sudo make setup
 
 # Start server
 sudo make up
+
+# View logs
+sudo make logs
 ```
