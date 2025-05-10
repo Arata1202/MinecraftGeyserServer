@@ -4,7 +4,7 @@ if [ ! -f "./Paper.jar" ]; then
   ./.bin/jar/cmd/paper.sh
   ./.bin/jar/cmd/via-version.sh
 
-  make reboot
+  ./.bin/reboot.sh
 
   while [ ! -f "eula.txt" ]; do
     sleep 1
