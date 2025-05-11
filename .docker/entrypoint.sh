@@ -37,19 +37,19 @@ if [ ! -f "./Via-Version.jar" ] || [ ! -f "./plugins/Via-Version.jar" ]; then
         "https://api.spiget.org/v2/resources/19254/download"
 fi
 
-if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
-    mv ./Geyser-Spigot.jar plugins/
-fi
+if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ]; then
+    if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
+        mv ./Geyser-Spigot.jar plugins/
+    fi
 
-if [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
-    mv ./Floodgate-Spigot.jar plugins/
-fi
+    if [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
+        mv ./Floodgate-Spigot.jar plugins/
+    fi
 
-if [ ! -f "./plugins/Via-Version.jar" ]; then
-    mv ./Via-Version.jar plugins/
-fi
+    if [ ! -f "./plugins/Via-Version.jar" ]; then
+        mv ./Via-Version.jar plugins/
+    fi
 
-if [ ! -f "./plugins/Geyser-Spigot.jar" ] && [ ! -f "./plugins/Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Via-Version.jar" ]; then
     java -Xmx2G -Xms2G -jar Paper.jar &
     JAVA_PID=$!
 
