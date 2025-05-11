@@ -8,7 +8,7 @@ if [ ! -f "./Paper.jar" ]; then
     curl -o Paper.jar \
         "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
 
-    java -Xmx2G -Xms2G -jar Paper.jar &
+    java -Xmx2G -Xms2G -jar Paper.jar nogui
 
     while [ ! -f "eula.txt" ]; do
         sleep 1
@@ -34,6 +34,8 @@ if [ ! -f "./Via-Version.jar" ] && [ ! -f "./plugins/Via-Version.jar" ]; then
         "https://api.spiget.org/v2/resources/19254/download"
 fi
 
+java -Xmx2G -Xms2G -jar Paper.jar
+
 if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ]; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
         mv ./Geyser-Spigot.jar plugins/
@@ -46,8 +48,6 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     if [ ! -f "./plugins/Via-Version.jar" ]; then
         mv ./Via-Version.jar plugins/
     fi
-
-    java -Xmx2G -Xms2G -jar Paper.jar &
 
     while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
         sleep 1
@@ -73,5 +73,3 @@ fi
 if ! grep -q 'rcon.password=minecraft' "server.properties"; then
     echo 'rcon.password=minecraft' >> "server.properties"
 fi
-
-exec "$@"
