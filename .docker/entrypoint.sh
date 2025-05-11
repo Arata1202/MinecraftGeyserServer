@@ -8,7 +8,11 @@ if [ ! -f "./Paper.jar" ]; then
     curl -o Paper.jar \
         "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
 
-    java -Xmx2G -Xms2G -jar Paper.jar nogui
+    java -Xmx2G -Xms2G -jar Paper.jar &
+
+    while [ ! -f "eula.txt" ]; do
+        sleep 1
+    done
 fi
 
 if grep -q 'eula=false' "eula.txt"; then
@@ -44,18 +48,10 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     fi
 
     java -Xmx2G -Xms2G -jar Paper.jar &
-    JAVA_PID=$!
 
     while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
         sleep 1
     done
-
-    until grep -q "Done" logs/latest.log 2>/dev/null; do
-        sleep 1
-    done
-
-    kill "$JAVA_PID"
-    wait "$JAVA_PID" 2>/dev/null || true
 fi
 
 if grep -q 'auth-type: online' "plugins/Geyser-Spigot/config.yml"; then
