@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y curl jq make
 COPY . .
 
 RUN chmod +x ./.docker/entrypoint.sh
+RUN chmod +x ./.docker/start.sh
 
 EXPOSE 19132
 EXPOSE 25565
