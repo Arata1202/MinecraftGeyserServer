@@ -52,8 +52,6 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
         sleep 1
     done
-
-    rm -f ./world/session.lock ./world_nether/session.lock ./world_the_end/session.lock
 fi
 
 if grep -q 'auth-type: online' "plugins/Geyser-Spigot/config.yml"; then
