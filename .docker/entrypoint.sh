@@ -16,23 +16,24 @@ if [ ! -f "./Paper.jar" ]; then
     done
 
     kill "$JAVA_PID"
+    wait "$JAVA_PID" 2>/dev/null || true
 fi
 
 if grep -q 'eula=false' "eula.txt"; then
     sed -i 's/eula=false/eula=true/' "eula.txt"
 fi
 
-if [ ! -f "./Geyser-Spigot.jar" ] || [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
+if [ ! -f "./Geyser-Spigot.jar" ] && [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
     curl -L -o Geyser-Spigot.jar \
         "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot"
 fi
 
-if [ ! -f "./Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
+if [ ! -f "./Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
     curl -L -o Floodgate-Spigot.jar \
         "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot"
 fi
 
-if [ ! -f "./Via-Version.jar" ] || [ ! -f "./plugins/Via-Version.jar" ]; then
+if [ ! -f "./Via-Version.jar" ] && [ ! -f "./plugins/Via-Version.jar" ]; then
     curl -L -o Via-Version.jar \
         "https://api.spiget.org/v2/resources/19254/download"
 fi
@@ -58,6 +59,7 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     done
 
     kill "$JAVA_PID"
+    wait "$JAVA_PID" 2>/dev/null || true
 fi
 
 if grep -q 'auth-type: online' "plugins/Geyser-Spigot/config.yml"; then
