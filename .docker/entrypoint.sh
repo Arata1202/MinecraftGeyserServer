@@ -8,15 +8,7 @@ if [ ! -f "./Paper.jar" ]; then
     curl -o Paper.jar \
         "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
 
-    java -Xmx2G -Xms2G -jar Paper.jar &
-    JAVA_PID=$!
-
-    while [ ! -f "eula.txt" ]; do
-        sleep 1
-    done
-
-    kill "$JAVA_PID"
-    wait "$JAVA_PID" 2>/dev/null || true
+    java -Xmx2G -Xms2G -jar Paper.jar nogui
 fi
 
 if grep -q 'eula=false' "eula.txt"; then
@@ -54,7 +46,7 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     java -Xmx2G -Xms2G -jar Paper.jar &
     JAVA_PID=$!
 
-    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
+    until grep -q "Done" logs/latest.log 2>/dev/null; do
         sleep 1
     done
 
