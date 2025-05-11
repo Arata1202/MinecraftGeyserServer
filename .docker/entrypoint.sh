@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ ! -f "./Paper.jar" ]; then
     VERSION=$(curl -s "https://api.papermc.io/v2/projects/paper" | jq -r '.versions[-1]')
     BUILD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${VERSION}" | jq -r '.builds[-1]')
@@ -46,3 +48,5 @@ sed -i 's/enforce-secure-profile=true/enforce-secure-profile=false/' "server.pro
 echo 'enable-rcon=true' >> "server.properties"
 echo 'rcon.port=25575' >> "server.properties"
 echo 'rcon.password=minecraft' >> "server.properties"
+
+exec "$@"
