@@ -46,6 +46,10 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     java -Xmx2G -Xms2G -jar Paper.jar &
     JAVA_PID=$!
 
+    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
+        sleep 1
+    done
+
     until grep -q "Done" logs/latest.log 2>/dev/null; do
         sleep 1
     done
