@@ -2,13 +2,17 @@
 
 set -e
 
+if [ -f "./Paper.jar" ]; then
+    java -Xmx2G -Xms2G -jar Paper.jar &
+fi
+
 if [ ! -f "./Paper.jar" ]; then
     VERSION=$(curl -s "https://api.papermc.io/v2/projects/paper" | jq -r '.versions[-1]')
     BUILD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${VERSION}" | jq -r '.builds[-1]')
     curl -o Paper.jar \
         "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
 
-    java -Xmx2G -Xms2G -jar Paper.jar nogui
+    java -Xmx2G -Xms2G -jar Paper.jar &
 
     while [ ! -f "eula.txt" ]; do
         sleep 1
@@ -34,8 +38,6 @@ if [ ! -f "./Via-Version.jar" ] && [ ! -f "./plugins/Via-Version.jar" ]; then
         "https://api.spiget.org/v2/resources/19254/download"
 fi
 
-java -Xmx2G -Xms2G -jar Paper.jar
-
 if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ]; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
         mv ./Geyser-Spigot.jar plugins/
@@ -48,6 +50,8 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     if [ ! -f "./plugins/Via-Version.jar" ]; then
         mv ./Via-Version.jar plugins/
     fi
+
+    java -Xmx2G -Xms2G -jar Paper.jar &
 
     while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
         sleep 1
