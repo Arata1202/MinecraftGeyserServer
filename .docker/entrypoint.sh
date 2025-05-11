@@ -5,5 +5,3 @@
 .bin/mv/entrypoint.sh
 
 .bin/edit/entrypoint.sh
-
-.bin/boot.sh
