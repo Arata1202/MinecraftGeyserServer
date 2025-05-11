@@ -13,4 +13,4 @@ EXPOSE 25565
 EXPOSE 25575
 
 ENTRYPOINT ["./.docker/entrypoint.sh"]
-CMD ["java", "-Xmx2G", "-Xms2G", "-jar", "Paper.jar"]
+CMD ["./.docker/start.sh"]
