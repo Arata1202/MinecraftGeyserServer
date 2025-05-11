@@ -6,7 +6,6 @@
 
 !.aws/
 !ec2.sh
-!stop.sh
 
 !.docker/
 !Dockerfile
