@@ -50,12 +50,7 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
         sleep 1
     done
 
-    until grep -q "Done" logs/latest.log 2>/dev/null; do
-        sleep 1
-    done
-
     kill "$JAVA_PID"
-    wait "$JAVA_PID" 2>/dev/null || true
 fi
 
 if grep -q 'auth-type: online' "plugins/Geyser-Spigot/config.yml"; then
