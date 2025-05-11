@@ -34,7 +34,7 @@ cd MinecraftGeyserServer
 # Set up EC2
 ./.aws/ec2.sh
 
-# Set up server
+# Build image
 sudo make build
 
 # Start server
