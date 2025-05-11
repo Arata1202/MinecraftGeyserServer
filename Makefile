@@ -5,7 +5,7 @@ up:
 	@docker compose up -d
 
 down:
-	.bin/stop.sh
+	.aws/stop.sh
 	@docker compose down
 
 logs:

@@ -4,19 +4,13 @@
 !Makefile
 !docker-compose.yml
 
-!cmd/
-!entrypoint.sh
-
 !.aws/
 !ec2.sh
-
-!.bin/
-!reboot.sh
-!boot.sh
 !stop.sh
 
 !.docker/
 !Dockerfile
+!entrypoint.sh
 
 !.github/
 !workflows/
@@ -27,17 +21,3 @@
 !ec2.tf
 !vpc.tf
 !variables.example.tf
-
-!jar/
-!floodgate.sh
-!geyser.sh
-!paper.sh
-!via-version.sh
-
-!edit/
-!eula.sh
-!geyser-spigot.sh
-!server-properties.sh
-
-!mv/
-!jar.sh
