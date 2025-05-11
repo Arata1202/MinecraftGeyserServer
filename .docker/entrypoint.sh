@@ -48,15 +48,10 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
     fi
 
     java -Xmx2G -Xms2G -jar Paper.jar &
-    JAVA_PID=$!
 
     while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
         sleep 1
     done
-
-    kill "$JAVA_PID"
-    wait "$JAVA_PID" 2>/dev/null
-    rm -f ./world/session.lock ./world_nether/session.lock ./world_the_end/session.lock
 fi
 
 if grep -q 'auth-type: online' "plugins/Geyser-Spigot/config.yml"; then
