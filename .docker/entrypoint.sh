@@ -1,19 +1,12 @@
 #!/bin/bash
 
+set -e
+
 if [ ! -f "./Paper.jar" ]; then
     VERSION=$(curl -s "https://api.papermc.io/v2/projects/paper" | jq -r '.versions[-1]')
     BUILD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${VERSION}" | jq -r '.builds[-1]')
     curl -o Paper.jar \
         "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
-
-    curl -L -o Geyser-Spigot.jar \
-        "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot"
-
-    curl -L -o Floodgate-Spigot.jar \
-        "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot"
-
-    curl -L -o Via-Version.jar \
-        "https://api.spiget.org/v2/resources/19254/download"
 
     java -Xmx2G -Xms2G -jar Paper.jar &
     JAVA_PID=$!
@@ -25,13 +18,38 @@ if [ ! -f "./Paper.jar" ]; then
     kill "$JAVA_PID"
 fi
 
-sed -i 's/eula=false/eula=true/' "eula.txt"
+if grep -q 'eula=false' "eula.txt"; then
+    sed -i 's/eula=false/eula=true/' "eula.txt"
+fi
 
-if [ ! -f "./plugins/Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Geyser-Spigot.jar" ] && [ ! -f "./plugins/Via-Version.jar" ]; then
-    mv ./Floodgate-Spigot.jar plugins/
+if [ ! -f "./Geyser-Spigot.jar" ] || [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
+    curl -L -o Geyser-Spigot.jar \
+        "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot"
+fi
+
+if [ ! -f "./Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
+    curl -L -o Floodgate-Spigot.jar \
+        "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot"
+fi
+
+if [ ! -f "./Via-Version.jar" ] || [ ! -f "./plugins/Via-Version.jar" ]; then
+    curl -L -o Via-Version.jar \
+        "https://api.spiget.org/v2/resources/19254/download"
+fi
+
+if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
     mv ./Geyser-Spigot.jar plugins/
-    mv ./Via-Version.jar plugins/
+fi
 
+if [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
+    mv ./Floodgate-Spigot.jar plugins/
+fi
+
+if [ ! -f "./plugins/Via-Version.jar" ]; then
+    mv ./Via-Version.jar plugins/
+fi
+
+if [ ! -f "./plugins/Geyser-Spigot.jar" ] && [ ! -f "./plugins/Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Via-Version.jar" ]; then
     java -Xmx2G -Xms2G -jar Paper.jar &
     JAVA_PID=$!
 
@@ -42,11 +60,24 @@ if [ ! -f "./plugins/Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Geyser-Spigot.
     kill "$JAVA_PID"
 fi
 
-sed -i 's/auth-type: online/auth-type: floodgate/' "plugins/Geyser-Spigot/config.yml"
+if grep -q 'auth-type: online' "plugins/Geyser-Spigot/config.yml"; then
+    sed -i 's/auth-type: online/auth-type: floodgate/' "plugins/Geyser-Spigot/config.yml"
+fi
 
-sed -i 's/enforce-secure-profile=true/enforce-secure-profile=false/' "server.properties"
-echo 'enable-rcon=true' >> "server.properties"
-echo 'rcon.port=25575' >> "server.properties"
-echo 'rcon.password=minecraft' >> "server.properties"
+if grep -q 'enforce-secure-profile=true' "server.properties"; then
+    sed -i 's/enforce-secure-profile=true/enforce-secure-profile=false/' "server.properties"
+fi
+
+if ! grep -q 'enable-rcon=true' "server.properties"; then
+    echo 'enable-rcon=true' >> "server.properties"
+fi
+
+if ! grep -q 'rcon.port=25575' "server.properties"; then
+    echo 'rcon.port=25575' >> "server.properties"
+fi
+
+if ! grep -q 'rcon.password=minecraft' "server.properties"; then
+    echo 'rcon.password=minecraft' >> "server.properties"
+fi
 
 exec "$@"
