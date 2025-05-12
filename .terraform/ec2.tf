@@ -1,18 +1,18 @@
 resource "aws_instance" "minecraft_server" {
-  ami                         = "ami-038e94aea55c0f480"
-  instance_type               = "c8g.large"
-  key_name                    = "minecraft_key"
+  ami                         = var.ami
+  instance_type               = var.instance_type
+  key_name                    = var.key_name
   subnet_id                   = aws_subnet.minecraft_public_subnet_1.id
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.minecraft_sg.id]
 
   root_block_device {
-    volume_type = "gp3"
+    volume_type = var.volume_type
     volume_size = var.volume_size
   }
 
   tags = {
-    Name = var.instance_name
+    Name = "minecraft_server"
   }
 }
 
