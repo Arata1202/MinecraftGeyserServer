@@ -3,11 +3,13 @@
 !README.md
 !Makefile
 !docker-compose.yml
+!.env.example
 
 !.aws/
 !ec2.sh
 
 !.bin/
+!backup.sh
 !start.sh
 !stop.sh
 !update.sh

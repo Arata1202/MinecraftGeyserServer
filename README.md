@@ -31,6 +31,10 @@ terraform apply
 git clone https://github.com/Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
+# Prepare and edit .env file
+mv .env.example .env
+vi .env
+
 # Set up EC2
 ./.aws/ec2.sh
 

@@ -6,6 +6,7 @@ up:
 
 down:
 	.bin/stop.sh
+	.bin/backup.sh
 	@docker compose down
 
 logs:
@@ -14,4 +15,7 @@ logs:
 update:
 	.bin/update.sh
 
-.PHONY: build up down logs update
+backup:
+	.bin/backup.sh
+
+.PHONY: build up down logs update backup
