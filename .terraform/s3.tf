@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "minecraft_s3" {
-  bucket        = var.bucket_name
-  force_destroy = true
+  bucket = var.bucket_name
 }
 
 resource "aws_s3_bucket_public_access_block" "minecraft_bpa" {
