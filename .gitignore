@@ -10,6 +10,7 @@
 !.bin/
 !start.sh
 !stop.sh
+!update.sh
 
 !.docker/
 !Dockerfile

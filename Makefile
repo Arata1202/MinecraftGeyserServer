@@ -11,4 +11,7 @@ down:
 logs:
 	@docker compose logs minecraft
 
-.PHONY: build up down logs
+update:
+	.bin/update.sh
+
+.PHONY: build up down logs update
