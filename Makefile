@@ -2,6 +2,7 @@ setup:
 	@docker compose up --build
 
 up:
+	.bin/update.sh
 	@docker compose up -d
 
 down:
