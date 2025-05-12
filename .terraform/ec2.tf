@@ -5,6 +5,7 @@ resource "aws_instance" "minecraft_server" {
   subnet_id                   = aws_subnet.minecraft_public_subnet_1.id
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.minecraft_sg.id]
+  iam_instance_profile        = aws_iam_instance_profile.minecraft_instance_profile.name
 
   root_block_device {
     volume_type = var.volume_type

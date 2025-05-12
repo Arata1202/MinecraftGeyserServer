@@ -27,4 +27,5 @@
 !ec2.tf
 !s3.tf
 !vpc.tf
+!iam.tf
 !variables.example.tf
