@@ -1,11 +1,11 @@
-build:
-	@docker compose build
+setup:
+	@docker compose up --build
 
 up:
 	@docker compose up -d
 
 down:
-	.aws/stop.sh
+	.bin/stop.sh
 	@docker compose down
 
 logs:
