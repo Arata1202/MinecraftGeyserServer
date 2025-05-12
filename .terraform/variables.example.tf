@@ -5,3 +5,7 @@ variable "instance_name" {
 variable "volume_size" {
   default = "8"
 }
+
+variable "bucket_name" {
+  default = "minecraft_s3"
+}

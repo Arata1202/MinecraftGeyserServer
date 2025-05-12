@@ -23,5 +23,6 @@
 !.terraform/
 !main.tf
 !ec2.tf
+!s3.tf
 !vpc.tf
 !variables.example.tf
