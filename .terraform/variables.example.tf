@@ -3,11 +3,12 @@ variable "region" {
 }
 
 variable "ami" {
-  default = "ami-038e94aea55c0f480"
+  # default = "ami-026c39f4021df9abe" # x86_64
+  default = "ami-038e94aea55c0f480" # arm64
 }
 
 variable "instance_type" {
-  default = "c8g.large"
+  default = "c6g.xlarge"
 }
 
 variable "key_name" {
@@ -19,7 +20,7 @@ variable "volume_type" {
 }
 
 variable "volume_size" {
-  default = "8"
+  default = "20"
 }
 
 variable "bucket_name" {
