@@ -1,7 +1,7 @@
 data "archive_file" "minecraft_lambda_start" {
   type        = "zip"
-  source_file = "lambda/start.py"
-  output_path = "lambda/start.zip"
+  source_file = "../lambda/start.py"
+  output_path = "../lambda/zip/start.zip"
 }
 
 resource "aws_lambda_function" "minecraft_lambda_start" {
