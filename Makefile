@@ -19,7 +19,4 @@ update:
 backup:
 	.bin/backup.sh
 
-upload:
-	.bin/upload.sh
-
-.PHONY: setup up down logs update backup upload
+.PHONY: setup up down logs update backup
