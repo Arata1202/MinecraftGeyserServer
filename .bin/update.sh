@@ -1,7 +1,7 @@
-VERSION=$(curl -s "https://api.papermc.io/v2/projects/paper" | jq -r '.versions[-1]')
-BUILD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${VERSION}" | jq -r '.builds[-1]')
-curl -f -o Paper.jar \
-    "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
+VERSION=$(curl -s "https://api.papermc.io/v2/projects/folia" | jq -r '.versions[-1]')
+BUILD=$(curl -s "https://api.papermc.io/v2/projects/folia/versions/${VERSION}" | jq -r '.builds[-1]')
+curl -f -o Folia.jar \
+    "https://api.papermc.io/v2/projects/folia/versions/${VERSION}/builds/${BUILD}/downloads/folia-${VERSION}-${BUILD}.jar"
 
 curl -f -L -o plugins/Geyser-Spigot.jar \
     "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot"

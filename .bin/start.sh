@@ -1,1 +1,1 @@
-java -Xmx6G -Xms6G -jar Paper.jar
+java -Xmx6G -Xms6G -jar Folia.jar
