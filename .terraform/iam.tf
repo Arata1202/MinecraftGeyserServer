@@ -17,6 +17,7 @@ resource "aws_iam_role" "minecraft_s3_role" {
 
 resource "aws_iam_policy" "minecraft_s3_put_only_policy" {
   name = "minecraft_s3_put_only_policy"
+
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -32,6 +33,11 @@ resource "aws_iam_policy" "minecraft_s3_put_only_policy" {
 resource "aws_iam_role_policy_attachment" "minecraft_s3_put_only_attachment" {
   role       = aws_iam_role.minecraft_s3_role.name
   policy_arn = aws_iam_policy.minecraft_s3_put_only_policy.arn
+}
+
+resource "aws_iam_role_policy_attachment" "minecraft_ssm_attachment" {
+  role       = aws_iam_role.minecraft_s3_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 resource "aws_iam_instance_profile" "minecraft_instance_profile" {
@@ -66,6 +72,13 @@ resource "aws_iam_policy" "minecraft_lambda_policy" {
           "ec2:StartInstances",
           "ec2:StopInstances",
           "ec2:DescribeInstances"
+        ],
+        Resource = "*"
+      },
+      {
+        Effect = "Allow",
+        Action = [
+          "ssm:SendCommand"
         ],
         Resource = "*"
       },

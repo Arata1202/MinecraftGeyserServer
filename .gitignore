@@ -36,4 +36,5 @@
 !vpc.tf
 !iam.tf
 !lambda-start.tf
+!lambda-stop.tf
 !variables.example.tf
