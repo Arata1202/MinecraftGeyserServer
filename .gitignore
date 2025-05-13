@@ -4,6 +4,10 @@
 !Makefile
 !docker-compose.yml
 !.env.example
+!upload.sh
+!.gitkeep
+
+!uploads/
 
 !.aws/
 !ec2.sh
