@@ -9,7 +9,7 @@ resource "aws_lambda_function" "minecraft_lambda_start" {
   filename         = data.archive_file.minecraft_lambda_start.output_path
   source_code_hash = data.archive_file.minecraft_lambda_start.output_base64sha256
   runtime          = "python3.9"
-  role             = aws_iam_role.lambda_iam_role.arn
+  role             = aws_iam_role.minecraft_lambda_role.arn
   handler          = "start.lambda_handler"
   timeout          = 300
 
