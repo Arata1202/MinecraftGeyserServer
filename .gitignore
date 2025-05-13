@@ -9,6 +9,9 @@
 
 !uploads/
 
+!lambda/
+!start.py
+
 !.aws/
 !ec2.sh
 
@@ -32,4 +35,5 @@
 !s3.tf
 !vpc.tf
 !iam.tf
+!lambda-start.tf
 !variables.example.tf

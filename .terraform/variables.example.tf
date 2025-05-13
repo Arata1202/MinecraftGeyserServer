@@ -26,3 +26,11 @@ variable "volume_size" {
 variable "bucket_name" {
   default = "minecraft_s3"
 }
+
+variable "instance_id" {
+  default = "i-xxxxxxxxxxxxxxxxxx"
+}
+
+variable "discord_webhook_url" {
+  default = "https://discord.com/api/webhooks/xxx/yyy"
+}
