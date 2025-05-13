@@ -78,7 +78,8 @@ resource "aws_iam_policy" "minecraft_lambda_policy" {
       {
         Effect = "Allow",
         Action = [
-          "ssm:SendCommand"
+          "ssm:SendCommand",
+          "ssm:GetCommandInvocation"
         ],
         Resource = "*"
       },

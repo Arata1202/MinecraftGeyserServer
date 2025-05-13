@@ -3,6 +3,7 @@ import time
 import json
 import os
 import urllib.request
+from botocore.exceptions import ClientError
 
 def lambda_handler(event, context):
     instance_id = os.environ['INSTANCE_ID']
@@ -21,12 +22,19 @@ def lambda_handler(event, context):
     command_id = response['Command']['CommandId']
 
     for _ in range(30):
-        result = ssm.get_command_invocation(
-            CommandId=command_id,
-            InstanceId=instance_id
-        )
-        if result['Status'] in ['Success', 'Cancelled', 'TimedOut', 'Failed']:
-            break
+        try:
+            result = ssm.get_command_invocation(
+                CommandId=command_id,
+                InstanceId=instance_id
+            )
+            if result['Status'] in ['Success', 'Cancelled', 'TimedOut', 'Failed']:
+                break
+        except ClientError as e:
+            if "InvocationDoesNotExist" in str(e):
+                time.sleep(1)
+                continue
+            else:
+                raise e
         time.sleep(1)
 
     if result['Status'] != 'Success':
@@ -36,7 +44,6 @@ def lambda_handler(event, context):
         message = 'サーバーの停止が完了しました🛑'
 
     data = json.dumps({'content': message}).encode('utf-8')
-
     req = urllib.request.Request(
         webhook_url,
         data=data,
@@ -45,7 +52,6 @@ def lambda_handler(event, context):
             'User-Agent': 'Mozilla/5.0 (compatible; LambdaBot/1.0)'
         }
     )
-
     urllib.request.urlopen(req)
 
-    return {"status": "stopped"}
+    return {"status": result['Status']}
