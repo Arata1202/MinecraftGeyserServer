@@ -10,8 +10,8 @@ def lambda_handler(event, context):
     region = os.environ.get('AWS_REGION', 'ap-northeast-1')
     webhook_url = os.environ['WEBHOOK_URL']
 
-    ec2 = boto3.client('ec2', region_name=region)
     ssm = boto3.client('ssm', region_name=region)
+    ec2 = boto3.client('ec2', region_name=region)
 
     ec2.start_instances(InstanceIds=[instance_id])
 
@@ -34,12 +34,7 @@ def lambda_handler(event, context):
     response = ssm.send_command(
         InstanceIds=[instance_id],
         DocumentName="AWS-RunShellScript",
-        Parameters={
-            'commands': [
-                'cd /home/ubuntu/MinecraftGeyserServer',
-                'make up'
-            ]
-        }
+        Parameters={'commands': ["cd /home/ubuntu/MinecraftGeyserServer && make up"]},
     )
 
     command_id = response['Command']['CommandId']
@@ -62,9 +57,10 @@ def lambda_handler(event, context):
 
     public_ip = instance['Reservations'][0]['Instances'][0].get('PublicIpAddress', 'IP未取得')
 
-    message = f'サーバーの起動が完了しました🟢\nパブリック IPv4 アドレス：{public_ip}'
     if result['Status'] != 'Success':
-        message += f'\n⚠️ make up 実行に失敗しました: {result["Status"]}'
+        message = f"make up に失敗しました: {result['Status']}"
+    else:
+        message = f'サーバーの起動が完了しました🟢\nパブリック IPv4 アドレス：{public_ip}'
 
     data = json.dumps({'content': message}).encode('utf-8')
 
