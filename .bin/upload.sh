@@ -25,4 +25,3 @@ if [ -f "./uploads/server.properties" ]; then
     scp -i $KEY_PATH -r ./uploads/server.properties ubuntu@$IP_ADDRESS:/home/ubuntu/MinecraftGeyserServer/ && \
     rm ./uploads/server.properties
 fi
-
