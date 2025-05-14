@@ -44,7 +44,7 @@ def lambda_handler(event, context):
             time.sleep(1)
 
         if result['Status'] != 'Success':
-            message = f"make down に失敗しました ❌\nStatus: {result['Status']}\n{result.get('StandardErrorContent', '')}"
+            message = f"make down に失敗しました⚠️: {result['Status']}"
         else:
             ec2.stop_instances(InstanceIds=[instance_id])
 
@@ -58,9 +58,10 @@ def lambda_handler(event, context):
             if state == 'stopped':
                 message = 'サーバーの停止が完了しました🔴'
             else:
-                message = '⚠️ サーバー停止処理を実行しましたが、完全には停止していません'
+                message = 'タイムアウト⚠️'
 
     data = json.dumps({'content': message}).encode('utf-8')
+
     req = urllib.request.Request(
         webhook_url,
         data=data,
@@ -69,6 +70,7 @@ def lambda_handler(event, context):
             'User-Agent': 'Mozilla/5.0 (compatible; LambdaBot/1.0)'
         }
     )
+
     urllib.request.urlopen(req)
 
     return {"status": state}

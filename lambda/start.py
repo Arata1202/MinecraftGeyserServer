@@ -58,7 +58,7 @@ def lambda_handler(event, context):
     public_ip = instance['Reservations'][0]['Instances'][0].get('PublicIpAddress', 'IP未取得')
 
     if result['Status'] != 'Success':
-        message = f"make up に失敗しました: {result['Status']}"
+        message = f"make up に失敗しました⚠️: {result['Status']}"
     else:
         message = f'サーバーの起動が完了しました🟢\nパブリック IPv4 アドレス：{public_ip}'
 
