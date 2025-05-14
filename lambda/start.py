@@ -22,6 +22,15 @@ def lambda_handler(event, context):
             break
         time.sleep(5)
 
+    for _ in range(30):
+        statuses = ec2.describe_instance_status(InstanceIds=[instance_id])
+        if statuses['InstanceStatuses']:
+            inst_status = statuses['InstanceStatuses'][0]['InstanceStatus']['Status']
+            sys_status = statuses['InstanceStatuses'][0]['SystemStatus']['Status']
+            if inst_status == 'ok' and sys_status == 'ok':
+                break
+        time.sleep(5)
+
     response = ssm.send_command(
         InstanceIds=[instance_id],
         DocumentName="AWS-RunShellScript",
@@ -53,7 +62,7 @@ def lambda_handler(event, context):
 
     public_ip = instance['Reservations'][0]['Instances'][0].get('PublicIpAddress', 'IP未取得')
 
-    message = f'サーバーの起動が完了しました\nパブリック IPv4 アドレス：{public_ip}'
+    message = f'サーバーの起動が完了しました🟢\nパブリック IPv4 アドレス：{public_ip}'
     if result['Status'] != 'Success':
         message += f'\n⚠️ make up 実行に失敗しました: {result["Status"]}'
 

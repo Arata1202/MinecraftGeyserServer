@@ -13,35 +13,52 @@ def lambda_handler(event, context):
     ssm = boto3.client('ssm', region_name=region)
     ec2 = boto3.client('ec2', region_name=region)
 
-    response = ssm.send_command(
-        InstanceIds=[instance_id],
-        DocumentName="AWS-RunShellScript",
-        Parameters={'commands': ["cd /home/ubuntu/MinecraftGeyserServer && make down"]},
-    )
+    instance = ec2.describe_instances(InstanceIds=[instance_id])
+    state = instance['Reservations'][0]['Instances'][0]['State']['Name']
 
-    command_id = response['Command']['CommandId']
-
-    for _ in range(30):
-        try:
-            result = ssm.get_command_invocation(
-                CommandId=command_id,
-                InstanceId=instance_id
-            )
-            if result['Status'] in ['Success', 'Cancelled', 'TimedOut', 'Failed']:
-                break
-        except ClientError as e:
-            if "InvocationDoesNotExist" in str(e):
-                time.sleep(1)
-                continue
-            else:
-                raise e
-        time.sleep(1)
-
-    if result['Status'] != 'Success':
-        message = f"make down に失敗しました ❌\nStatus: {result['Status']}\n{result.get('StandardErrorContent', '')}"
+    if state == 'stopped':
+        message = 'サーバーの停止が完了しました🔴'
     else:
-        ec2.stop_instances(InstanceIds=[instance_id])
-        message = 'サーバーの停止が完了しました🛑'
+        response = ssm.send_command(
+            InstanceIds=[instance_id],
+            DocumentName="AWS-RunShellScript",
+            Parameters={'commands': ["cd /home/ubuntu/MinecraftGeyserServer && make down"]},
+        )
+
+        command_id = response['Command']['CommandId']
+
+        for _ in range(30):
+            try:
+                result = ssm.get_command_invocation(
+                    CommandId=command_id,
+                    InstanceId=instance_id
+                )
+                if result['Status'] in ['Success', 'Cancelled', 'TimedOut', 'Failed']:
+                    break
+            except ClientError as e:
+                if "InvocationDoesNotExist" in str(e):
+                    time.sleep(1)
+                    continue
+                else:
+                    raise e
+            time.sleep(1)
+
+        if result['Status'] != 'Success':
+            message = f"make down に失敗しました ❌\nStatus: {result['Status']}\n{result.get('StandardErrorContent', '')}"
+        else:
+            ec2.stop_instances(InstanceIds=[instance_id])
+
+            for _ in range(30):
+                instance = ec2.describe_instances(InstanceIds=[instance_id])
+                state = instance['Reservations'][0]['Instances'][0]['State']['Name']
+                if state == 'stopped':
+                    break
+                time.sleep(5)
+
+            if state == 'stopped':
+                message = 'サーバーの停止が完了しました🔴'
+            else:
+                message = '⚠️ サーバー停止処理を実行しましたが、完全には停止していません'
 
     data = json.dumps({'content': message}).encode('utf-8')
     req = urllib.request.Request(
@@ -54,4 +71,4 @@ def lambda_handler(event, context):
     )
     urllib.request.urlopen(req)
 
-    return {"status": result['Status']}
+    return {"status": state}
