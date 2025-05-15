@@ -11,3 +11,6 @@ curl -f -L -o plugins/Floodgate-Spigot.jar \
 
 curl -f -L -o plugins/Via-Version.jar \
     "https://api.spiget.org/v2/resources/19254/download"
+
+curl -f -L -o plugins/DiscordSRV.jar \
+        "https://download.discordsrv.com/v2/DiscordSRV/DiscordSRV/release/download/latest/jar"
