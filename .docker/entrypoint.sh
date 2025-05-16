@@ -58,13 +58,17 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
 
     java -Xmx2G -Xms2G -jar Folia.jar &
 
-    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ]; do
+    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ]; do
         sleep 1
     done
 fi
 
 if grep -q 'auth-type: online' "plugins/Geyser-Spigot/config.yml"; then
     sed -i 's/auth-type: online/auth-type: floodgate/' "plugins/Geyser-Spigot/config.yml"
+fi
+
+if grep -q 'Experiment_WebhookChatMessageDelivery: false' "plugins/DiscordSRV/config.yml"; then
+    sed -i 's/Experiment_WebhookChatMessageDelivery: false/Experiment_WebhookChatMessageDelivery: true/' "plugins/DiscordSRV/config.yml"
 fi
 
 if grep -q 'enforce-secure-profile=true' "server.properties"; then
