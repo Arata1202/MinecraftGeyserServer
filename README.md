@@ -41,6 +41,10 @@ vi .env
 # Set up server
 sudo make setup
 
+# Edit the DiscordSRV configuration
+sudo vi ./plugins/DiscordSRV/config.yml
+sudo vi ./plugins/DiscordSRV/messages.yml
+
 # Start server
 sudo make up
 

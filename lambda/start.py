@@ -34,7 +34,7 @@ def lambda_handler(event, context):
     response = ssm.send_command(
         InstanceIds=[instance_id],
         DocumentName="AWS-RunShellScript",
-        Parameters={'commands': ["cd /home/ubuntu/MinecraftGeyserServer && make up"]},
+        Parameters={'commands': ["cd /home/ubuntu/MinecraftGeyserServer && sudo make up"]},
     )
 
     command_id = response['Command']['CommandId']
