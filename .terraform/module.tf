@@ -1,3 +1,19 @@
+module "vpc" {
+  source = "./vpc"
+}
+
+module "ec2" {
+  source = "./ec2"
+
+  ami           = var.ami
+  instance_type = var.instance_type
+  key_name      = var.key_name
+  volume_type   = var.volume_type
+  volume_size   = var.volume_size
+  vpc_id        = module.vpc.vpc_id
+  subnet_id     = module.vpc.public_subnet_1_id
+}
+
 module "lambda" {
   source = "./lambda"
 
@@ -9,5 +25,11 @@ module "s3" {
   source = "./s3"
 
   bucket_name   = var.bucket_name
-  iam_role_name = aws_iam_role.minecraft_s3_role.name
+  iam_role_name = module.ec2.iam_role_name
+}
+
+module "ssm" {
+  source = "./ssm"
+
+  iam_role_name = module.ec2.iam_role_name
 }
