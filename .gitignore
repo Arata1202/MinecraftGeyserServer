@@ -31,11 +31,13 @@
 !deploy.yml
 
 !.terraform/
+!module.tf
 !main.tf
 !ec2.tf
 !s3.tf
 !vpc.tf
 !iam.tf
-!lambda-start.tf
-!lambda-stop.tf
+!lambda/
+!start.tf
+!stop.tf
 !variables.example.tf
