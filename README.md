@@ -44,6 +44,9 @@ sudo make setup
 sudo vi ./plugins/DiscordSRV/config.yml
 sudo vi ./plugins/DiscordSRV/messages.yml
 
+# Add Players to Whitelist
+mcrcon -H 127.0.0.1 -P 25575 -p minecraft "whitelist add <PLAYER_NAME>"
+
 # Start server
 sudo make up
 
