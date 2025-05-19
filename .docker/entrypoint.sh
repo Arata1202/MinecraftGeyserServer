@@ -75,6 +75,10 @@ if grep -q 'enforce-secure-profile=true' "server.properties"; then
     sed -i 's/enforce-secure-profile=true/enforce-secure-profile=false/' "server.properties"
 fi
 
+if grep -q 'white-list=false' "server.properties"; then
+    sed -i 's/white-list=false/white-list=true/' "server.properties"
+fi
+
 if ! grep -q 'enable-rcon=true' "server.properties"; then
     echo 'enable-rcon=true' >> "server.properties"
 fi
