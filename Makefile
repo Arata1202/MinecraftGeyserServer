@@ -2,6 +2,7 @@ setup:
 	@docker compose up --build
 
 up:
+	.aws/route53.sh
 	@docker compose up -d
 
 down:
@@ -21,4 +22,7 @@ backup:
 upload:
 	.bin/upload.sh
 
-.PHONY: setup up down logs update backup upload
+route53:
+	.aws/route53.sh
+
+.PHONY: setup up down logs update backup upload route53
