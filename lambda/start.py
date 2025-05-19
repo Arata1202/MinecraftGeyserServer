@@ -60,7 +60,7 @@ def lambda_handler(event, context):
     if result['Status'] != 'Success':
         message = f"make up に失敗しました⚠️: {result['Status']}"
     else:
-        message = f'サーバーの起動が完了しました🟢\nパブリック IPv4 アドレス：{public_ip}'
+        message = f'サーバーの起動が完了しました🟢'
 
     data = json.dumps({'content': message}).encode('utf-8')
 
