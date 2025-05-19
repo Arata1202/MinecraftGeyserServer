@@ -26,10 +26,6 @@
 !Dockerfile
 !entrypoint.sh
 
-!.github/
-!workflows/
-!deploy.yml
-
 !.terraform/
 !module.tf
 !main.tf
