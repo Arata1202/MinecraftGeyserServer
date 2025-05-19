@@ -30,7 +30,7 @@ terraform apply
 git clone https://github.com/Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
-# Prepare and edit .env file (set BUCKET_NAME)
+# Prepare and edit .env file (set BUCKET_NAME, ROUTE53_ZONEID, ROUTE53_FQDN)
 mv .env.example .env
 vi .env
 

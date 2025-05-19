@@ -34,3 +34,7 @@ variable "instance_id" {
 variable "discord_webhook_url" {
   default = "https://discord.com/api/webhooks/xxx/yyy"
 }
+
+variable "hosted_zone_id" {
+  default = "xxxxxxxxxx"
+}
