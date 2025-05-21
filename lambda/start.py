@@ -22,7 +22,7 @@ def lambda_handler(event, context):
             break
         time.sleep(5)
 
-    for _ in range(30):
+    while True:
         statuses = ec2.describe_instance_status(InstanceIds=[instance_id])
         if statuses['InstanceStatuses']:
             inst_status = statuses['InstanceStatuses'][0]['InstanceStatus']['Status']
@@ -39,7 +39,7 @@ def lambda_handler(event, context):
 
     command_id = response['Command']['CommandId']
 
-    for _ in range(30):
+    while True:
         try:
             result = ssm.get_command_invocation(
                 CommandId=command_id,

@@ -11,7 +11,7 @@ resource "aws_lambda_function" "minecraft_lambda_stop" {
   runtime          = "python3.9"
   role             = aws_iam_role.minecraft_lambda_role.arn
   handler          = "stop.lambda_handler"
-  timeout          = 300
+  timeout          = 900
 
   environment {
     variables = {

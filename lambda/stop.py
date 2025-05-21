@@ -27,7 +27,7 @@ def lambda_handler(event, context):
 
         command_id = response['Command']['CommandId']
 
-        for _ in range(30):
+        while True:
             try:
                 result = ssm.get_command_invocation(
                     CommandId=command_id,
@@ -48,7 +48,7 @@ def lambda_handler(event, context):
         else:
             ec2.stop_instances(InstanceIds=[instance_id])
 
-            for _ in range(30):
+            while True:
                 instance = ec2.describe_instances(InstanceIds=[instance_id])
                 state = instance['Reservations'][0]['Instances'][0]['State']['Name']
                 if state == 'stopped':
