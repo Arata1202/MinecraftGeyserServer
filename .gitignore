@@ -12,6 +12,8 @@
 !lambda/
 !start.py
 !stop.py
+!t3a.py
+!c7i.py
 
 !.aws/
 !ec2.sh
@@ -40,6 +42,8 @@
 !lambda/
 !start.tf
 !stop.tf
+!t3a.tf
+!c7i.tf
 !route53/
 !iam.tf
 !s3/

@@ -55,12 +55,19 @@ def lambda_handler(event, context):
                 raise e
         time.sleep(1)
 
-    public_ip = instance['Reservations'][0]['Instances'][0].get('PublicIpAddress', 'IP未取得')
-
     if result['Status'] != 'Success':
-        message = f"make up に失敗しました⚠️: {result['Status']}"
+        message = f"make up に失敗しました⚠️"
     else:
-        message = f'サーバーの起動が完了しました🟢'
+        instance_type = instance['Reservations'][0]['Instances'][0]['InstanceType']
+
+        if instance_type.startswith('c7i'):
+            spec_note = '（高スペック）'
+        elif instance_type.startswith('t3a'):
+            spec_note = '（低スペック）'
+        else:
+            spec_note = instance_type
+
+        message = f'サーバーの起動が完了しました🟢\nインスタンスタイプ：{instance_type} {spec_note}'
 
     data = json.dumps({'content': message}).encode('utf-8')
 
@@ -75,4 +82,4 @@ def lambda_handler(event, context):
 
     urllib.request.urlopen(req)
 
-    return {"status": result['Status'], "ip": public_ip}
+    return {"status": result['Status']}

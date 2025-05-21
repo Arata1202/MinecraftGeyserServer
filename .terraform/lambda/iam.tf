@@ -25,7 +25,8 @@ resource "aws_iam_policy" "minecraft_lambda_policy" {
           "ec2:StartInstances",
           "ec2:StopInstances",
           "ec2:DescribeInstances",
-          "ec2:DescribeInstanceStatus"
+          "ec2:DescribeInstanceStatus",
+          "ec2:ModifyInstanceAttribute"
         ],
         Resource = "*"
       },

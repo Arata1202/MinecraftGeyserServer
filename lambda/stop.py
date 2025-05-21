@@ -44,7 +44,7 @@ def lambda_handler(event, context):
             time.sleep(1)
 
         if result['Status'] != 'Success':
-            message = f"make down に失敗しました⚠️: {result['Status']}"
+            message = f"make down に失敗しました⚠️"
         else:
             ec2.stop_instances(InstanceIds=[instance_id])
 
