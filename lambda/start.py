@@ -65,7 +65,7 @@ def lambda_handler(event, context):
         elif instance_type.startswith('t3a'):
             spec_note = '（低スペック）'
         else:
-            spec_note = instance_type
+            spec_note = ''
 
         message = f'サーバーの起動が完了しました🟢\nインスタンスタイプ：{instance_type} {spec_note}'
 

@@ -18,7 +18,16 @@ def lambda_handler(event, context):
     state = instance['Reservations'][0]['Instances'][0]['State']['Name']
 
     if state == 'running':
-        message = f'インスタンスタイプを変更するには、サーバーを停止しておく必要があります⚠️'
+        instance_type = instance['Reservations'][0]['Instances'][0]['InstanceType']
+
+        if instance_type.startswith('c7i'):
+            spec_note = '（高スペック）'
+        elif instance_type.startswith('t3a'):
+            spec_note = '（低スペック）'
+        else:
+            spec_note = ''
+
+        message = f'サーバーはすでに起動しています🟢\nインスタンスタイプ：{instance_type} {spec_note}'
     else:
         ec2.modify_instance_attribute(
             InstanceId=instance_id,

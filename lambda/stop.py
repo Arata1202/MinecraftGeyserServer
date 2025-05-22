@@ -17,7 +17,7 @@ def lambda_handler(event, context):
     state = instance['Reservations'][0]['Instances'][0]['State']['Name']
 
     if state == 'stopped':
-        message = 'サーバーの停止が完了しました🔴'
+        message = 'サーバーはすでに停止しています🔴'
     else:
         response = ssm.send_command(
             InstanceIds=[instance_id],
