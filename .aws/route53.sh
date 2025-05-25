@@ -18,7 +18,7 @@ JSON="{\"Changes\": [
       \"ResourceRecordSet\": {
         \"Name\": \"${FQDN}\",
         \"Type\": \"A\",
-        \"TTL\": 300,
+        \"TTL\": 60,
         \"ResourceRecords\": [
           {
             \"Value\": \"$PUBIP\"
