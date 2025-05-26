@@ -2,7 +2,7 @@ FROM eclipse-temurin:21-jdk
 
 WORKDIR /server
 
-RUN apt-get update && apt-get install -y curl jq make
+RUN apt-get update && apt-get install -y curl jq
 
 COPY . .
 

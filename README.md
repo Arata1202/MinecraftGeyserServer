@@ -40,7 +40,8 @@ vi .env
 # Set up server
 sudo make setup
 
-# Edit the DiscordSRV configuration
+# Edit the DiscordSRV configuration (set BotToken, Channels, DiscordConsoleChannelId, DiscordInviteLink)
+# https://github.com/DiscordSRV/DiscordSRV/tree/master/src/main/resources/messages
 sudo vi ./plugins/DiscordSRV/config.yml
 sudo vi ./plugins/DiscordSRV/messages.yml
 
