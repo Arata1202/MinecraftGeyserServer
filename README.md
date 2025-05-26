@@ -61,7 +61,7 @@ sudo make down
 
 ```bash
 # Clone repository
-git clone https://github.com/Arata1202/MinecraftGeyserServer.git
+git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
 # Prepare and edit .env file (set KEY_PATH, IP_ADDRESS)
@@ -69,9 +69,9 @@ mv .env.example .env
 vi .env
 
 # Prepare world data
-mv world upload/
-mv world_nether upload/
-mv world_the_end upload/
+mv world uploads/
+mv world_nether uploads/
+mv world_the_end uploads/
 
 # Upload data
 make upload
