@@ -13,4 +13,7 @@ curl -f -L -o plugins/Via-Version.jar \
     "https://api.spiget.org/v2/resources/19254/download"
 
 curl -f -L -o plugins/DiscordSRV.jar \
-        "https://download.discordsrv.com/v2/DiscordSRV/DiscordSRV/release/download/latest/jar"
+    "https://download.discordsrv.com/v2/DiscordSRV/DiscordSRV/release/download/latest/jar"
+
+curl -f -L -o LunaChat.jar \
+    "https://api.spiget.org/v2/resources/82293/download"

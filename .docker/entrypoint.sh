@@ -39,7 +39,12 @@ if [ ! -f "./DiscordSRV.jar" ] && [ ! -f "./plugins/DiscordSRV.jar" ]; then
         "https://download.discordsrv.com/v2/DiscordSRV/DiscordSRV/release/download/latest/jar"
 fi
 
-if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ]; then
+if [ ! -f "./LunaChat.jar" ] && [ ! -f "./plugins/LunaChat.jar" ]; then
+    curl -L -o LunaChat.jar \
+        "https://api.spiget.org/v2/resources/82293/download"
+fi
+
+if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ] ; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
         mv ./Geyser-Spigot.jar plugins/
     fi
@@ -56,9 +61,13 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
         mv ./DiscordSRV.jar plugins/
     fi
 
+    if [ ! -f "./plugins/LunaChat.jar" ]; then
+        mv ./LunaChat.jar plugins/
+    fi
+
     java -Xmx2G -Xms2G -jar Paper.jar &
 
-    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ]; do
+    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ] || [ ! -f "plugins/LunaChat/config.yml" ]; do
         sleep 1
     done
 fi
@@ -69,6 +78,14 @@ fi
 
 if grep -q 'Experiment_WebhookChatMessageDelivery: false' "plugins/DiscordSRV/config.yml"; then
     sed -i 's/Experiment_WebhookChatMessageDelivery: false/Experiment_WebhookChatMessageDelivery: true/' "plugins/DiscordSRV/config.yml"
+fi
+
+if grep -q 'DisabledPluginHooks: []' "plugins/DiscordSRV/config.yml"; then
+    sed -i 's/DisabledPluginHooks: []/DisabledPluginHooks: ["LunaChat"]/' "plugins/DiscordSRV/config.yml"
+fi
+
+if grep -q 'japanizeType: none' "plugins/LunaChat/config.yml"; then
+    sed -i 's/japanizeType: none/japanizeType: GoogleIME/' "plugins/LunaChat/config.yml"
 fi
 
 if grep -q 'enforce-secure-profile=true' "server.properties"; then
