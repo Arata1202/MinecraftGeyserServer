@@ -80,8 +80,8 @@ if grep -q 'Experiment_WebhookChatMessageDelivery: false' "plugins/DiscordSRV/co
     sed -i 's/Experiment_WebhookChatMessageDelivery: false/Experiment_WebhookChatMessageDelivery: true/' "plugins/DiscordSRV/config.yml"
 fi
 
-if grep -q 'DisabledPluginHooks: []' "plugins/DiscordSRV/config.yml"; then
-    sed -i 's/DisabledPluginHooks: []/DisabledPluginHooks: ["LunaChat"]/' "plugins/DiscordSRV/config.yml"
+if grep -q 'DisabledPluginHooks: *\[]' "plugins/DiscordSRV/config.yml"; then
+    sed -i 's/DisabledPluginHooks: *\[]/DisabledPluginHooks: ["LunaChat"]/' "plugins/DiscordSRV/config.yml"
 fi
 
 if grep -q 'japanizeType: none' "plugins/LunaChat/config.yml"; then
