@@ -17,3 +17,6 @@ curl -f -L -o plugins/DiscordSRV.jar \
 
 curl -f -L -o LunaChat.jar \
     "https://api.spiget.org/v2/resources/82293/download"
+
+curl -f -L -o Skript.jar \
+        "https://api.spiget.org/v2/resources/114544/download"

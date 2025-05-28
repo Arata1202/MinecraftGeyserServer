@@ -9,6 +9,9 @@
 
 !uploads/
 
+!skript/
+!death.sk
+
 !lambda/
 !start.py
 !stop.py

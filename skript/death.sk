@@ -1,0 +1,6 @@
+on death of player:
+    set {_x} to round(x-coordinate of location of victim)
+    set {_y} to round(y-coordinate of location of victim)
+    set {_z} to round(z-coordinate of location of victim)
+
+    broadcast "%victim%の死亡位置：%{_x}%, %{_y}%, %{_z}%"
