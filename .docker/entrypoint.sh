@@ -2,13 +2,13 @@
 
 set -e
 
-if [ ! -f "./Folia.jar" ]; then
-    VERSION=$(curl -s "https://api.papermc.io/v2/projects/folia" | jq -r '.versions[-1]')
-    BUILD=$(curl -s "https://api.papermc.io/v2/projects/folia/versions/${VERSION}" | jq -r '.builds[-1]')
-    curl -o Folia.jar \
-        "https://api.papermc.io/v2/projects/folia/versions/${VERSION}/builds/${BUILD}/downloads/folia-${VERSION}-${BUILD}.jar"
+if [ ! -f "./Paper.jar" ]; then
+    VERSION=$(curl -s "https://api.papermc.io/v2/projects/paper" | jq -r '.versions[-1]')
+    BUILD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${VERSION}" | jq -r '.builds[-1]')
+    curl -o Paper.jar \
+        "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
 
-    java -Xmx2G -Xms2G -jar Folia.jar &
+    java -Xmx2G -Xms2G -jar Paper.jar &
 
     while [ ! -f "eula.txt" ]; do
         sleep 1
@@ -56,7 +56,7 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
         mv ./DiscordSRV.jar plugins/
     fi
 
-    java -Xmx2G -Xms2G -jar Folia.jar &
+    java -Xmx2G -Xms2G -jar Paper.jar &
 
     while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ]; do
         sleep 1
