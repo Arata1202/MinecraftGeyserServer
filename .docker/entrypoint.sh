@@ -44,17 +44,12 @@ if [ ! -f "./LunaChat.jar" ] && [ ! -f "./plugins/LunaChat.jar" ]; then
         "https://api.spiget.org/v2/resources/82293/download"
 fi
 
-if [ ! -f "./Skript.jar" ] && [ ! -f "./plugins/Skript.jar" ]; then
-    curl -L -o Skript.jar \
-        "https://api.spiget.org/v2/resources/114544/download"
-fi
-
 if [ ! -f "./DeathChest.jar" ] && [ ! -f "./plugins/DeathChest.jar" ]; then
     curl -L -o DeathChest.jar \
         "https://api.spiget.org/v2/resources/101066/download"
 fi
 
-if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ] || [ ! -f "./plugins/Skript.jar" ] || [ ! -f "./plugins/DeathChest.jar" ]; then
+if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ]  || [ ! -f "./plugins/DeathChest.jar" ]; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
         mv ./Geyser-Spigot.jar plugins/
     fi
@@ -75,17 +70,13 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
         mv ./LunaChat.jar plugins/
     fi
 
-    if [ ! -f "./plugins/Skript.jar" ]; then
-        mv ./Skript.jar plugins/
-    fi
-
     if [ ! -f "./plugins/DeathChest.jar" ]; then
         mv ./DeathChest.jar plugins/
     fi
 
     java -Xmx2G -Xms2G -jar Paper.jar &
 
-    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ] || [ ! -f "plugins/LunaChat/config.yml" ] || [ ! -d "plugins/Skript/scripts" ] || [ ! -f "plugins/DeathChest/config.yml" ]; do
+    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ] || [ ! -f "plugins/LunaChat/config.yml" ] || [ ! -f "plugins/DeathChest/config.yml" ]; do
         sleep 1
     done
 fi
@@ -137,7 +128,5 @@ fi
 if ! grep -q 'rcon.password=minecraft' "server.properties"; then
     echo 'rcon.password=minecraft' >> "server.properties"
 fi
-
-cp ./skript/death.sk plugins/Skript/scripts/
 
 exec "$@"
