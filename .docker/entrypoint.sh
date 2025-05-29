@@ -117,8 +117,6 @@ if ! grep -q 'rcon.password=minecraft' "server.properties"; then
     echo 'rcon.password=minecraft' >> "server.properties"
 fi
 
-if [ ! -f "./plugins/Skript/scripts/death.sk" ]; then
-    cp ./skript/death.sk plugins/Skript/scripts/
-fi
+cp ./skript/death.sk plugins/Skript/scripts/
 
 exec "$@"
