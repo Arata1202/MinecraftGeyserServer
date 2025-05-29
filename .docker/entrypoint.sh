@@ -49,7 +49,12 @@ if [ ! -f "./Skript.jar" ] && [ ! -f "./plugins/Skript.jar" ]; then
         "https://api.spiget.org/v2/resources/114544/download"
 fi
 
-if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ] || [ ! -f "./plugins/Skript.jar" ]; then
+if [ ! -f "./DeathChest.jar" ] && [ ! -f "./plugins/DeathChest.jar" ]; then
+    curl -L -o DeathChest.jar \
+        "https://api.spiget.org/v2/resources/101066/download"
+fi
+
+if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ] || [ ! -f "./plugins/Skript.jar" ] || [ ! -f "./plugins/DeathChest.jar" ]; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
         mv ./Geyser-Spigot.jar plugins/
     fi
@@ -74,9 +79,13 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
         mv ./Skript.jar plugins/
     fi
 
+    if [ ! -f "./plugins/DeathChest.jar" ]; then
+        mv ./DeathChest.jar plugins/
+    fi
+
     java -Xmx2G -Xms2G -jar Paper.jar &
 
-    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ] || [ ! -f "plugins/LunaChat/config.yml" ] || [ ! -d "plugins/Skript/scripts" ]; do
+    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ] || [ ! -f "plugins/LunaChat/config.yml" ] || [ ! -d "plugins/Skript/scripts" ] || [ ! -f "plugins/DeathChest/config.yml" ]; do
         sleep 1
     done
 fi
@@ -95,6 +104,18 @@ fi
 
 if grep -q 'japanizeType: none' "plugins/LunaChat/config.yml"; then
     sed -i 's/japanizeType: none/japanizeType: GoogleIME/' "plugins/LunaChat/config.yml"
+fi
+
+if grep -q 'expiration: 600' "plugins/DeathChest/config.yml"; then
+    sed -i 's/expiration: 600/expiration: -1/' "plugins/DeathChest/config.yml"
+fi
+
+if grep -q 'blast-protection: false' "plugins/DeathChest/config.yml"; then
+    sed -i 's/blast-protection: false/blast-protection: true/' "plugins/DeathChest/config.yml"
+fi
+
+if grep -A 3 '^change-death-message:' "plugins/DeathChest/config.yml" | grep -q '  enabled: false'; then
+    sed -i '/^change-death-message:/,/^[^ ]/s/^  enabled: false/  enabled: true/' "plugins/DeathChest/config.yml"
 fi
 
 if grep -q 'enforce-secure-profile=true' "server.properties"; then

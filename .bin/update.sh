@@ -20,3 +20,6 @@ curl -f -L -o LunaChat.jar \
 
 curl -f -L -o Skript.jar \
         "https://api.spiget.org/v2/resources/114544/download"
+
+curl -f -L -o DeathChest.jar \
+    "https://api.spiget.org/v2/resources/101066/download"
