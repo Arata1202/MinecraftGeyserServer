@@ -3,10 +3,7 @@
 set -e
 
 if [ ! -f "./Paper.jar" ]; then
-    VERSION=$(curl -s "https://api.papermc.io/v2/projects/paper" | jq -r '.versions[-1]')
-    BUILD=$(curl -s "https://api.papermc.io/v2/projects/paper/versions/${VERSION}" | jq -r '.builds[-1]')
-    curl -o Paper.jar \
-        "https://api.papermc.io/v2/projects/paper/versions/${VERSION}/builds/${BUILD}/downloads/paper-${VERSION}-${BUILD}.jar"
+    cp ./jar/Paper.jar ./
 
     java -Xmx2G -Xms2G -jar Paper.jar &
 
@@ -19,63 +16,33 @@ if grep -q 'eula=false' "eula.txt"; then
     sed -i 's/eula=false/eula=true/' "eula.txt"
 fi
 
-if [ ! -f "./Geyser-Spigot.jar" ] && [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
-    curl -L -o Geyser-Spigot.jar \
-        "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot"
-fi
-
-if [ ! -f "./Floodgate-Spigot.jar" ] && [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
-    curl -L -o Floodgate-Spigot.jar \
-        "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot"
-fi
-
-if [ ! -f "./Via-Version.jar" ] && [ ! -f "./plugins/Via-Version.jar" ]; then
-    curl -L -o Via-Version.jar \
-        "https://api.spiget.org/v2/resources/19254/download"
-fi
-
-if [ ! -f "./DiscordSRV.jar" ] && [ ! -f "./plugins/DiscordSRV.jar" ]; then
-    curl -L -o DiscordSRV.jar \
-        "https://download.discordsrv.com/v2/DiscordSRV/DiscordSRV/release/download/latest/jar"
-fi
-
-if [ ! -f "./LunaChat.jar" ] && [ ! -f "./plugins/LunaChat.jar" ]; then
-    curl -L -o LunaChat.jar \
-        "https://api.spiget.org/v2/resources/82293/download"
-fi
-
-if [ ! -f "./DeathChest.jar" ] && [ ! -f "./plugins/DeathChest.jar" ]; then
-    curl -L -o DeathChest.jar \
-        "https://api.spiget.org/v2/resources/101066/download"
-fi
-
 if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ] || [ ! -f "./plugins/DeathChest.jar" ] || [ ! -f "./plugins/Dynmap.jar" ]; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
-        mv ./Geyser-Spigot.jar plugins/
+        cp ./jar/Geyser-Spigot.jar plugins/
     fi
 
     if [ ! -f "./plugins/Floodgate-Spigot.jar" ]; then
-        mv ./Floodgate-Spigot.jar plugins/
+        cp ./jar/Floodgate-Spigot.jar plugins/
     fi
 
     if [ ! -f "./plugins/Via-Version.jar" ]; then
-        mv ./Via-Version.jar plugins/
+        cp ./jar/Via-Version.jar plugins/
     fi
 
     if [ ! -f "./plugins/DiscordSRV.jar" ]; then
-        mv ./DiscordSRV.jar plugins/
+        cp ./jar/DiscordSRV.jar plugins/
     fi
 
     if [ ! -f "./plugins/LunaChat.jar" ]; then
-        mv ./LunaChat.jar plugins/
+        cp ./jar/LunaChat.jar plugins/
     fi
 
     if [ ! -f "./plugins/DeathChest.jar" ]; then
-        mv ./DeathChest.jar plugins/
+        cp ./jar/DeathChest.jar plugins/
     fi
 
     if [ ! -f "./plugins/Dynmap.jar" ]; then
-        mv ./jar/Dynmap.jar plugins/
+        cp ./jar/Dynmap.jar plugins/
     fi
 
     java -Xmx2G -Xms2G -jar Paper.jar &
