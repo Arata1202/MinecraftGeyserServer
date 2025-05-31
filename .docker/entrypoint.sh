@@ -10,13 +10,19 @@ if [ ! -f "./Paper.jar" ]; then
     while [ ! -f "eula.txt" ]; do
         sleep 1
     done
+
+    if grep -q 'eula=false' "eula.txt"; then
+        sed -i 's/eula=false/eula=true/' "eula.txt"
+    fi
 fi
 
-if grep -q 'eula=false' "eula.txt"; then
-    sed -i 's/eula=false/eula=true/' "eula.txt"
-fi
-
-if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ] || [ ! -f "./plugins/DeathChest.jar" ] || [ ! -f "./plugins/Dynmap.jar" ]; then
+if [ ! -f "./plugins/Geyser-Spigot.jar" ] || \
+   [ ! -f "./plugins/Floodgate-Spigot.jar" ] || \
+   [ ! -f "./plugins/Via-Version.jar" ] || \
+   [ ! -f "./plugins/DiscordSRV.jar" ] || \
+   [ ! -f "./plugins/LunaChat.jar" ] || \
+   [ ! -f "./plugins/DeathChest.jar" ] || \
+   [ ! -f "./plugins/Dynmap.jar" ]; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
         cp ./jar/Geyser-Spigot.jar plugins/
     fi
@@ -47,7 +53,11 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
 
     java -Xmx2G -Xms2G -jar Paper.jar &
 
-    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || [ ! -f "server.properties" ] || [ ! -f "plugins/DiscordSRV/config.yml" ] || [ ! -f "plugins/LunaChat/config.yml" ] || [ ! -f "plugins/DeathChest/config.yml" ]; do
+    while [ ! -f "./plugins/Geyser-Spigot/config.yml" ] || \
+          [ ! -f "server.properties" ] || \
+          [ ! -f "plugins/DiscordSRV/config.yml" ] || \
+          [ ! -f "plugins/LunaChat/config.yml" ] || \
+          [ ! -f "plugins/DeathChest/config.yml" ]; do
         sleep 1
     done
 fi
