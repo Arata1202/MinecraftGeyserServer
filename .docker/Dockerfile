@@ -12,6 +12,7 @@ RUN chmod +x ./.bin/start.sh
 EXPOSE 19132
 EXPOSE 25565
 EXPOSE 25575
+EXPOSE 8123
 
 ENTRYPOINT ["./.docker/entrypoint.sh"]
 CMD ["./.bin/start.sh"]
