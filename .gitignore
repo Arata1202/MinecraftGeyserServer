@@ -54,3 +54,6 @@
 !rt.tf
 !subnet.tf
 !vpc.tf
+
+!jar/
+!**.jar

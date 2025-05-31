@@ -49,7 +49,7 @@ if [ ! -f "./DeathChest.jar" ] && [ ! -f "./plugins/DeathChest.jar" ]; then
         "https://api.spiget.org/v2/resources/101066/download"
 fi
 
-if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ]  || [ ! -f "./plugins/DeathChest.jar" ]; then
+if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.jar" ] || [ ! -f "./plugins/Via-Version.jar" ] || [ ! -f "./plugins/DiscordSRV.jar" ] || [ ! -f "./plugins/LunaChat.jar" ] || [ ! -f "./plugins/DeathChest.jar" ] || [ ! -f "./plugins/Dynmap.jar" ]; then
     if [ ! -f "./plugins/Geyser-Spigot.jar" ]; then
         mv ./Geyser-Spigot.jar plugins/
     fi
@@ -72,6 +72,10 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || [ ! -f "./plugins/Floodgate-Spigot.
 
     if [ ! -f "./plugins/DeathChest.jar" ]; then
         mv ./DeathChest.jar plugins/
+    fi
+
+    if [ ! -f "./plugins/Dynmap.jar" ]; then
+        mv ./jar/Dynmap.jar plugins/
     fi
 
     java -Xmx2G -Xms2G -jar Paper.jar &
