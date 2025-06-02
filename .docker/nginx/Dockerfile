@@ -1,7 +1,7 @@
 FROM nginx:1.28-alpine
 ENV TZ=UTC
 
-COPY ./.docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY ./.docker/nginx /etc/nginx/conf.d
 
 EXPOSE 80
 
