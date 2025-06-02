@@ -62,5 +62,8 @@
 !subnet.tf
 !vpc.tf
 
+!dist/
+!index.html
+
 !jar/
 !**.jar
