@@ -1,8 +1,6 @@
 cp ./jar/Paper.jar ./
-cp ./jar/Geyser-Spigot.jar plugins/
-cp ./jar/Floodgate-Spigot.jar plugins/
-cp ./jar/Via-Version.jar plugins/
-cp ./jar/DiscordSRV.jar plugins/
-cp ./jar/LunaChat.jar plugins/
-cp ./jar/DeathChest.jar plugins/
-cp ./jar/Dynmap.jar plugins/
+for file in ./jar/*.jar; do
+    if [[ $(basename "$file") != "Paper.jar" ]]; then
+        cp "$file" ./plugins/
+    fi
+done
