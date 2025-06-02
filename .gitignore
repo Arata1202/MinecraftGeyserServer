@@ -30,9 +30,11 @@
 !.docker/
 !minecraft/
 !nginx/
+!certbot/
 !Dockerfile
 !entrypoint.sh
 !default.conf
+!ssl_server.conf.txt
 
 !.terraform/
 !module.tf
