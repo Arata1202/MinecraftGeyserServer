@@ -63,5 +63,4 @@
 !subnet.tf
 !vpc.tf
 
-!jar/
-!**.jar
+!jar/**.jar
