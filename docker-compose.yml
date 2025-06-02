@@ -4,7 +4,7 @@ services:
     container_name: minecraft
     build:
       context: .
-      dockerfile: ./.docker/Dockerfile
+      dockerfile: ./.docker/minecraft/Dockerfile
     volumes:
       - ./:/server
     working_dir: '/server'
@@ -13,3 +13,23 @@ services:
     - "19132:19132/udp"
     - "25575:25575"
     - "8123:8123"
+    networks:
+    - network
+
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: ./.docker/nginx/Dockerfile
+    volumes:
+    - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+    - "80:80"
+    - "443:443"
+    depends_on:
+    - minecraft
+    networks:
+    - network
+
+networks:
+  network:

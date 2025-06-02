@@ -28,8 +28,11 @@
 !update.sh
 
 !.docker/
+!minecraft/
+!nginx/
 !Dockerfile
 !entrypoint.sh
+!default.conf
 
 !.terraform/
 !module.tf
