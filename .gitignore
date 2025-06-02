@@ -20,6 +20,8 @@
 !route53.sh
 
 !.bin/
+!active.py
+!active.sh
 !backup.sh
 !start.sh
 !stop.sh
