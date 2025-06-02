@@ -3,6 +3,7 @@ setup:
 
 up:
 	.aws/route53.sh
+	.bin/update.sh
 	@docker compose up -d
 
 down:
