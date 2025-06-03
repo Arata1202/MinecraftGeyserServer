@@ -24,6 +24,8 @@ services:
     volumes:
       - ./logs:/batch/logs
     working_dir: '/batch'
+    env_file:
+      - .env
 
   nginx:
     container_name: nginx
