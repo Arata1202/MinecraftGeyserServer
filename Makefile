@@ -4,7 +4,7 @@ setup:
 up:
 	.aws/route53.sh
 	.bin/update.sh
-	@docker compose up -d
+	@docker compose up -d minecraft nginx certbot
 
 down:
 	.bin/stop.sh

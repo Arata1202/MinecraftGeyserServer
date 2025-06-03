@@ -37,7 +37,6 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
       - ./.htpasswd:/etc/nginx/.htpasswd
-    restart: always
     ports:
       - "80:80"
       - "443:443"
