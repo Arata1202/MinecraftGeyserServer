@@ -6,6 +6,7 @@
 !.env.example
 !upload.sh
 !.gitkeep
+!.dockerignore
 
 !uploads/
 
@@ -21,7 +22,6 @@
 
 !.bin/
 !renew_ssl_certificate.sh
-!active.py
 !active.sh
 !backup.sh
 !start.sh
@@ -32,10 +32,12 @@
 !minecraft/
 !nginx/
 !certbot/
+!batch/
 !Dockerfile
 !entrypoint.sh
 !default.conf
 !ssl_server.conf.txt
+!active.py
 
 !.terraform/
 !module.tf

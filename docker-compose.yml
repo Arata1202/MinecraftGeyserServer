@@ -16,6 +16,15 @@ services:
     networks:
       - network
 
+  batch:
+    container_name: batch
+    build:
+      context: .
+      dockerfile: ./.docker/batch/Dockerfile
+    volumes:
+      - ./logs:/batch/logs
+    working_dir: '/batch'
+
   nginx:
     container_name: nginx
     build:
