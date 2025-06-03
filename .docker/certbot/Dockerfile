@@ -1,1 +1,1 @@
-FROM certbot/certbot:4.0.0
+FROM certbot/certbot:v4.0.0

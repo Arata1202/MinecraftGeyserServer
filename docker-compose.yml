@@ -55,7 +55,6 @@ services:
       - /var/www/html:/var/www/html
     command: ["--version"]
 
-
 networks:
   network:
     driver: bridge

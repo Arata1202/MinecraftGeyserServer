@@ -30,7 +30,7 @@ terraform apply
 git clone https://github.com/Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
-# Prepare and edit .env file (set BUCKET_NAME, ROUTE53_ZONEID, ROUTE53_FQDN)
+# Prepare and edit .env file (set BUCKET_NAME, ROUTE53_ZONEID, ROUTE53_FQDN, LAMBDA_STOP_URL)
 mv .env.example .env
 vi .env
 
@@ -45,14 +45,32 @@ sudo make setup
 sudo vi ./plugins/DiscordSRV/config.yml
 sudo vi ./plugins/DiscordSRV/messages.yml
 
-# Add Players to Whitelist
-mcrcon -H 127.0.0.1 -P 25575 -p minecraft "whitelist add <PLAYER_NAME>"
-
 # Start server
 sudo make up
 
-# View logs
-sudo make logs
+# Add Players to Whitelist
+mcrcon -H 127.0.0.1 -P 25575 -p minecraft "whitelist add <PLAYER_NAME>"
+
+# Edit Nginx configuration files (set FQDN)
+vi ./.docker/nginx/default.conf
+vi ./.docker/nginx/ssl_server.conf.txt
+
+# Switch to HTTP config temporarily for Let's Encrypt certificate issuance
+mv ./.docker/nginx/default.conf ./.docker/nginx/default.conf.txt
+mv ./.docker/nginx/ssl_server.conf.txt ./.docker/nginx/default.conf
+
+# Obtain SSL certificate with Let's Encrypt
+sudo docker compose run --rm certbot certonly --webroot -w /var/www/html -d <FQDN>
+
+# Revert back to HTTPS (SSL-enabled) nginx configuration
+mv ./.docker/nginx/default.conf ./.docker/nginx/ssl_server.conf.txt
+mv ./.docker/nginx/default.conf.txt ./.docker/nginx/default.conf
+
+# Create a new .htpasswd file and add a user for Basic Authentication
+htpasswd -c /etc/nginx/.htpasswd <USER_NAME>
+
+# Reload Nginx
+sudo docker compose exec nginx nginx -s reload
 
 # Stop server
 sudo make down
