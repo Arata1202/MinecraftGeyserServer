@@ -9,7 +9,6 @@ up:
 down:
 	.bin/stop.sh
 	.bin/backup.sh
-	.bin/renew_ssl_certificate.sh
 	@docker compose down
 
 logs:
