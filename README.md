@@ -49,7 +49,7 @@ sudo vi ./plugins/DiscordSRV/messages.yml
 sudo make up
 
 # Add Players to Whitelist
-mcrcon -H 127.0.0.1 -P 25575 -p minecraft "whitelist add <PLAYER_NAME>"
+mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist add <PLAYER_NAME>"
 
 # Edit Nginx configuration files (set FQDN)
 vi ./.docker/nginx/default.conf

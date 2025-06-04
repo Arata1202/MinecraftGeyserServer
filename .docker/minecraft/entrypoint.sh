@@ -2,6 +2,10 @@
 
 set -e
 
+set -a
+source /home/ubuntu/MinecraftGeyserServer/.env
+set +a
+
 if [ ! -f "./Paper.jar" ]; then
     cp ./jar/Paper.jar ./
 
@@ -45,7 +49,7 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || \
     sed -i 's/white-list=false/white-list=true/' "server.properties"
     echo 'enable-rcon=true' >> "server.properties"
     echo 'rcon.port=25575' >> "server.properties"
-    echo 'rcon.password=minecraft' >> "server.properties"
+    echo "rcon.password=${RCON_PASSWORD}" >> server.properties
 
     # Geyser-Spigot
     sed -i 's/auth-type: online/auth-type: floodgate/' "plugins/Geyser-Spigot/config.yml"

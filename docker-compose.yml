@@ -13,6 +13,8 @@ services:
       - "19132:19132/udp"
       - "25575:25575"
       - "8123:8123"
+    env_file:
+      - .env
     networks:
       - network
 
