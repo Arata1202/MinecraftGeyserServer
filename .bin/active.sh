@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -a
-source .env
+source /home/ubuntu/MinecraftGeyserServer/.env
 set +a
 
 cd /home/ubuntu/MinecraftGeyserServer
