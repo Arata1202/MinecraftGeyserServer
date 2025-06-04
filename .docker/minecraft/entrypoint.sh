@@ -3,7 +3,7 @@
 set -e
 
 set -a
-source /home/ubuntu/MinecraftGeyserServer/.env
+source .env
 set +a
 
 if [ ! -f "./Paper.jar" ]; then

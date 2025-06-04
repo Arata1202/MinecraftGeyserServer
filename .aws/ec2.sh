@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt update
 sudo apt install -y ca-certificates curl gnupg make git gcc unzip apache2-utils
 sudo install -m 0755 -d /etc/apt/keyrings
