@@ -18,6 +18,19 @@ services:
     networks:
       - network
 
+  backup:
+    container_name: backup
+    build:
+      context: .
+      dockerfile: ./.docker/backup/Dockerfile
+    volumes:
+      - ./data/world:/backup/world
+      - ./data/world_nether:/backup/world_nether
+      - ./data/world_the_end:/backup/world_the_end
+    working_dir: '/backup'
+    env_file:
+      - .env
+
   batch:
     container_name: batch
     build:
