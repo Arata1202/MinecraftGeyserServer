@@ -1,5 +1,4 @@
 cache/
-certbot/
 config/
 libraries/
 logs/
@@ -8,15 +7,13 @@ versions/
 world/
 world_nether/
 world_the_end/
-.env
 banned-ips.json
 banned-players.json
 bukkit.yml
-comands.yml
+commands.yml
 eula.txt
 help.yml
 ops.json
-ops.txt.converted
 permissions.yml
 server.properties
 spigot.yml
