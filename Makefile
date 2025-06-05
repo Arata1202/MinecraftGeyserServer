@@ -9,7 +9,7 @@ up:
 down:
 	.bin/stop.sh
 	@docker compose run --rm backup
-	.bin/renew_ssl_certificate.sh
+	@docker compose run --rm certbot renew
 	@docker compose down
 
 logs:

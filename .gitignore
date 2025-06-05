@@ -21,7 +21,6 @@
 !route53.sh
 
 !.bin/
-!renew_ssl_certificate.sh
 !active.sh
 !backup.sh
 !start.sh
