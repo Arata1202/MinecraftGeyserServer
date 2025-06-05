@@ -33,6 +33,7 @@
 !nginx/
 !certbot/
 !batch/
+!backup/
 !Dockerfile
 !entrypoint.sh
 !default.conf
