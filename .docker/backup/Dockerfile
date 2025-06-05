@@ -2,10 +2,10 @@ FROM amazon/aws-cli:2.26.2
 
 WORKDIR /backup
 
-RUN apt-get update
+RUN yum update -y && yum install -y tar gzip
 
 COPY ./.bin/backup.sh .
 
 RUN chmod +x ./backup.sh
 
-CMD ["./backup.sh"]
+ENTRYPOINT ["./backup.sh"]

@@ -8,7 +8,7 @@ up:
 
 down:
 	.bin/stop.sh
-	.bin/backup.sh
+	@docker compose run --rm backup
 	.bin/renew_ssl_certificate.sh
 	@docker compose down
 
@@ -19,7 +19,7 @@ update:
 	.bin/update.sh
 
 backup:
-	.bin/backup.sh
+	@docker compose run --rm backup
 
 upload:
 	.bin/upload.sh
