@@ -71,8 +71,8 @@ def lambda_handler(event, context):
             InstanceIds=[instance_id],
             DocumentName="AWS-RunShellScript",
             Parameters={'commands': [
-                f'echo "java -Xmx{java_memory} -Xms{java_memory} -jar Paper.jar" > /home/ubuntu/MinecraftGeyserServer/.bin/start.sh',
-                'chmod +x /home/ubuntu/MinecraftGeyserServer/.bin/start.sh'
+                f'echo "java -Xmx{java_memory} -Xms{java_memory} -jar Paper.jar" > /home/ubuntu/MinecraftGeyserServer/.docker/minecraft/cmd.sh',
+                'chmod +x /home/ubuntu/MinecraftGeyserServer/.docker/minecraft/cmd.sh'
             ]},
         )
 

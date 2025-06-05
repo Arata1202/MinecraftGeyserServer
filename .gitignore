@@ -21,7 +21,6 @@
 
 !.bin/
 !active.sh
-!start.sh
 !stop.sh
 !update.sh
 
@@ -34,6 +33,7 @@
 !route53/
 !Dockerfile
 !entrypoint.sh
+!cmd.sh
 !default.conf
 !ssl_server.conf.txt
 !active.py
