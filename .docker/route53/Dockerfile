@@ -4,8 +4,8 @@ WORKDIR /route53
 
 RUN yum update -y && yum install -y curl
 
-COPY ./.aws/route53.sh .
+COPY ./.docker/route53/entrypoint.sh .
 
-RUN chmod +x ./route53.sh
+RUN chmod +x ./entrypoint.sh
 
-ENTRYPOINT ["./route53.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
