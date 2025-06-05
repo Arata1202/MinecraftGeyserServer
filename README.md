@@ -35,7 +35,7 @@ cp .env.example .env
 vi .env
 
 # Set up EC2
-./.aws/ec2.sh
+./.linux/setup.sh
 
 # Set up server
 sudo make setup
