@@ -32,6 +32,17 @@ services:
     env_file:
       - .env
 
+  route53:
+    container_name: route53
+    build:
+      context: .
+      dockerfile: ./.docker/route53/Dockerfile
+    volumes:
+      - ./.env:/route53/.env
+    working_dir: '/route53'
+    env_file:
+      - .env
+
   batch:
     container_name: batch
     build:

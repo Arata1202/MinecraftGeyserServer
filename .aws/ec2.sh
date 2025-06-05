@@ -14,8 +14,5 @@ git clone https://github.com/Tiiffi/mcrcon.git
 cd mcrcon
 make
 sudo cp mcrcon /usr/local/bin
-curl "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
 chmod +x /home/ubuntu/MinecraftGeyserServer/.bin/active.sh
 (crontab -l 2>/dev/null | grep -v 'active.sh'; echo "*/10 * * * * /home/ubuntu/MinecraftGeyserServer/.bin/active.sh") | crontab -

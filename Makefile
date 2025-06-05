@@ -2,7 +2,7 @@ setup:
 	@docker compose up --build
 
 up:
-	.aws/route53.sh
+	@docker compose run --rm route53
 	.bin/update.sh
 	@docker compose up -d minecraft nginx certbot
 
@@ -25,6 +25,6 @@ upload:
 	.bin/upload.sh
 
 route53:
-	.aws/route53.sh
+	@docker compose run --rm route53
 
 .PHONY: setup up down logs update backup upload route53
