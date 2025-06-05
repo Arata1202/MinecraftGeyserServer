@@ -4,8 +4,8 @@ WORKDIR /backup
 
 RUN yum update -y && yum install -y tar gzip
 
-COPY ./.bin/backup.sh .
+COPY ./.docker/backup/entrypoint.sh .
 
-RUN chmod +x ./backup.sh
+RUN chmod +x ./entrypoint.sh
 
-ENTRYPOINT ["./backup.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

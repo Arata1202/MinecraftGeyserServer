@@ -21,7 +21,6 @@
 
 !.bin/
 !active.sh
-!backup.sh
 !start.sh
 !stop.sh
 !update.sh
