@@ -28,8 +28,6 @@ services:
       - ./:/server
       - ./logs:/logs
     working_dir: '/cron'
-    env_file:
-      - .env
 
   backup:
     container_name: backup
