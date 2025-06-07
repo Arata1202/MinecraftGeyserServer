@@ -9,7 +9,6 @@
 !README.md
 
 !.bin/
-!active.sh
 !stop.sh
 !update.sh
 !upload.sh
@@ -22,6 +21,9 @@
 !batch/
 !active.py
 !certbot/
+!cron/
+!crontab
+!active.sh
 !minecraft/
 !nginx/
 !default.conf

@@ -18,6 +18,15 @@ services:
     networks:
       - network
 
+  cron:
+    container_name: cron
+    build:
+      context: .
+      dockerfile: ./.docker/cron/Dockerfile
+    volumes:
+      - ./logs:/logs
+    working_dir: '/cron'
+
   backup:
     container_name: backup
     build:
