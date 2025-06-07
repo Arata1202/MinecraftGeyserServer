@@ -61,7 +61,6 @@ services:
       dockerfile: ./.docker/batch/Dockerfile
     volumes:
       - ./logs:/batch/logs
-      - ./.docker/batch:/batch
     working_dir: '/batch'
     env_file:
       - .env
