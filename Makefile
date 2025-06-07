@@ -24,8 +24,8 @@ certbot:
 route53:
 	@docker compose run --rm route53
 
-active:
-	.bin/active.sh
+cron:
+	.bin/cron.sh
 
 stop:
 	.bin/stop.sh
@@ -36,4 +36,4 @@ update:
 upload:
 	.bin/upload.sh
 
-.PHONY: setup up down backup batch certbot route53 active stop update upload
+.PHONY: setup up down backup batch certbot route53 cron stop update upload

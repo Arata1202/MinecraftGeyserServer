@@ -9,7 +9,7 @@
 !README.md
 
 !.bin/
-!active.sh
+!cron.sh
 !stop.sh
 !update.sh
 !upload.sh
