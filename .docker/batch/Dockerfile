@@ -6,4 +6,4 @@ RUN apt-get update
 
 COPY ./.docker/batch/active.py ./active.py
 
-CMD ["python", "active.py"]
+CMD ["python", "src/active.py"]
