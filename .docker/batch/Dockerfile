@@ -4,4 +4,6 @@ WORKDIR /batch
 
 RUN apt-get update
 
-CMD ["python", "./active.py"]
+COPY ./.docker/batch/active.py ./active.py
+
+CMD ["python", "active.py"]
