@@ -2,21 +2,8 @@ import datetime
 import os
 import urllib.request
 
-print("=== ACTIVE.PY VERSION CHECK ===")
-print("This is the UPDATED version with /batch/logs/latest.log")
-print("If you see this message, the new version is running")
-
 file_path = '/batch/logs/latest.log'
 lambda_stop_url = os.environ.get("LAMBDA_STOP_URL")
-
-print(f"Looking for file at: {file_path}")
-print(f"File exists: {os.path.exists(file_path)}")
-
-if not os.path.exists(file_path):
-    print("ERROR: Log file not found!")
-    print("Minecraft server may not be running")
-    import sys
-    sys.exit(0)
 
 with open(file_path) as f:
     lines = f.readlines()
