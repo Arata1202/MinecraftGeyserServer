@@ -12,19 +12,28 @@ down:
 	@docker compose run --rm certbot renew
 	@docker compose down
 
-logs:
-	@docker compose logs minecraft
-
-update:
-	.bin/update.sh
-
 backup:
 	@docker compose run --rm backup
 
-upload:
-	.bin/upload.sh
+batch:
+	@docker compose run --rm batch
+
+certbot:
+	@docker compose run --rm certbot renew
 
 route53:
 	@docker compose run --rm route53
 
-.PHONY: setup up down logs update backup upload route53
+active:
+	.bin/active.sh
+
+stop:
+	.bin/stop.sh
+
+update:
+	.bin/update.sh
+
+upload:
+	.bin/upload.sh
+
+.PHONY: setup up down backup batch certbot route53 active stop update upload
