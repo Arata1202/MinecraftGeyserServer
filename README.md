@@ -73,7 +73,8 @@ htpasswd -c /etc/nginx/.htpasswd <USER_NAME>
 sudo docker compose exec nginx nginx -s reload
 
 # Set up cron
-(crontab -l 2>/dev/null; echo "*/10 * * * * /home/ubuntu/MinecraftGeyserServer/.bin/cron.sh") | crontab -
+touch logs/cron.log
+( sudo crontab -l 2>/dev/null; echo "*/10 * * * * /home/ubuntu/MinecraftGeyserServer/.bin/cron.sh >> /home/ubuntu/MinecraftGeyserServer/logs/cron.log 2>&1" ) | sudo crontab -
 
 # Stop server
 sudo make down
