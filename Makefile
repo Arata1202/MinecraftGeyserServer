@@ -4,7 +4,7 @@ setup:
 up:
 	@docker compose run --rm route53
 	.bin/update.sh
-	@docker compose up -d minecraft nginx certbot
+	@docker compose up -d minecraft nginx cron
 
 down:
 	.bin/stop.sh
