@@ -1,13 +1,36 @@
-FROM ubuntu:25.10
+FROM ubuntu:24.04
 
 WORKDIR /cron
 
-RUN apt-get update && apt-get install -y cron
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    curl \
+    cron \
+    gnupg \
+    lsb-release \
+    apt-transport-https \
+    sudo
+
+RUN install -m 0755 -d /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc && \
+    chmod a+r /etc/apt/keyrings/docker.asc
+
+RUN echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    $(. /etc/os-release && echo \"$VERSION_CODENAME\") stable" | \
+    tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+RUN apt-get update && apt-get install -y \
+    docker-ce \
+    docker-ce-cli \
+    containerd.io \
+    docker-buildx-plugin \
+    docker-compose-plugin
 
 COPY .docker/cron/crontab /etc/cron.d/active
 COPY .docker/cron/active.sh .
 
-RUN chmod 0644 /etc/cron.d/active
-RUN chmod +x ./active.sh
+RUN chmod 0644 /etc/cron.d/active && \
+    chmod +x ./active.sh
 
 CMD ["cron", "-f"]
