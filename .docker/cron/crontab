@@ -1,1 +1,0 @@
-*/5 * * * * root /bin/bash /cron/active.sh >> /logs/active.log 2>&1

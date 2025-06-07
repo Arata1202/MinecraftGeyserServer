@@ -14,3 +14,5 @@ git clone https://github.com/Tiiffi/mcrcon.git
 cd mcrcon
 make
 sudo cp mcrcon /usr/local/bin
+chmod +x /home/ubuntu/MinecraftGeyserServer/.bin/active.sh
+(crontab -l 2>/dev/null | grep -v 'active.sh'; echo "*/10 * * * * /home/ubuntu/MinecraftGeyserServer/.bin/active.sh") | crontab -
