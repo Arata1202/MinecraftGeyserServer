@@ -24,8 +24,6 @@ services:
       context: .
       dockerfile: ./.docker/cron/Dockerfile
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/server
       - ./logs:/logs
     working_dir: '/cron'
 

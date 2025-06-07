@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd /server && docker compose run --rm batch
+docker compose run --rm batch
