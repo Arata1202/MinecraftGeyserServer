@@ -2,7 +2,7 @@ import datetime
 import os
 import urllib.request
 
-file_path = '/batch/logs/latest.log'
+file_path = './logs/latest.log'
 lambda_stop_url = os.environ.get("LAMBDA_STOP_URL")
 
 with open(file_path) as f:
