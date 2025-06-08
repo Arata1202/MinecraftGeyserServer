@@ -2,7 +2,13 @@ FROM eclipse-temurin:21-jdk
 
 WORKDIR /server
 
-RUN apt-get update && apt-get install -y curl jq
+RUN apt-get update && apt-get install -y \
+    git \
+    make \
+    gcc
+
+RUN git clone https://github.com/Tiiffi/mcrcon.git && \
+    cd mcrcon && make && cp mcrcon /usr/local/bin
 
 COPY . .
 
