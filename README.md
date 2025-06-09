@@ -49,7 +49,7 @@ sudo vi ./plugins/DiscordSRV/messages.yml
 sudo make up
 
 # Add Players to Whitelist
-mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist add <PLAYER_NAME>"
+sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist add <PLAYER_NAME>"
 
 # Edit Nginx configuration files (set FQDN)
 vi ./.docker/nginx/default.conf
@@ -67,7 +67,7 @@ mv ./.docker/nginx/default.conf ./.docker/nginx/ssl_server.conf.txt
 mv ./.docker/nginx/default.conf.txt ./.docker/nginx/default.conf
 
 # Create a new .htpasswd file and add a user for Basic Authentication
-htpasswd -c /etc/nginx/.htpasswd <USER_NAME>
+sudo docker compose exec nginx htpasswd -c /etc/nginx/.htpasswd <USER_NAME>
 
 # Reload Nginx
 sudo docker compose exec nginx nginx -s reload
