@@ -99,3 +99,13 @@ mv world_the_end uploads/
 # Upload data
 make upload
 ```
+
+### Maintenance
+
+```bash
+# Check EBS disk usage
+df -h
+
+# Remove unused Docker builder cache
+sudo docker builder prune -f
+```
