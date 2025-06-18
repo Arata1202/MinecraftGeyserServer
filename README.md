@@ -49,6 +49,9 @@ sudo vi ./plugins/DiscordSRV/messages.yml
 sudo vi ./plugins/MOTD/config.yml
 mv server-icon.png ./plugins/MOTD/server icon/server-icon.png
 
+# Edit the DeathChest configuration
+sudo vi ./plugins/DeathChest/config.yml
+
 # Start server
 sudo make up
 

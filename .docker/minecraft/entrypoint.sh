@@ -40,8 +40,7 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || \
     while [ ! -f "server.properties" ] || \
           [ ! -f "plugins/Geyser-Spigot/config.yml" ] || \
           [ ! -f "plugins/DiscordSRV/config.yml" ] || \
-          [ ! -f "plugins/LunaChat/config.yml" ] || \
-          [ ! -f "plugins/DeathChest/config.yml" ]; do
+          [ ! -f "plugins/LunaChat/config.yml" ]; do
         sleep 1
     done
 
@@ -61,11 +60,6 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || \
 
     # LunaChat
     sed -i 's/japanizeType: none/japanizeType: GoogleIME/' "plugins/LunaChat/config.yml"
-
-    # DeathChest
-    sed -i 's/expiration: 600/expiration: -1/' "plugins/DeathChest/config.yml"
-    sed -i 's/blast-protection: false/blast-protection: true/' "plugins/DeathChest/config.yml"
-    sed -i '/^change-death-message:/,/^[^ ]/s/^  enabled: false/  enabled: true/' "plugins/DeathChest/config.yml"
 fi
 
 exec "$@"
