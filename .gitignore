@@ -54,6 +54,7 @@
 !subnet.tf
 !vpc.tf
 
+!jar/
 !jar/**.jar
 
 !lambda/

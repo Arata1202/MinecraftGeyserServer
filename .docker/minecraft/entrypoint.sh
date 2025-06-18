@@ -25,6 +25,7 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || \
    [ ! -f "./plugins/DiscordSRV.jar" ] || \
    [ ! -f "./plugins/LunaChat.jar" ] || \
    [ ! -f "./plugins/DeathChest.jar" ] || \
+   [ ! -f "./plugins/MOTD.jar" ] || \
    [ ! -f "./plugins/Dynmap.jar" ]; then
     for file in ./jar/*.jar; do
         if [[ $(basename "$file") != "Paper.jar" ]]; then

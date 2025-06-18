@@ -17,7 +17,7 @@ cd MinecraftGeyserServer/.terraform
 mv variables.example.tf variables.tf
 vi variables.tf
 
-# Create Resources
+# Create resources
 terraform init
 terraform plan
 terraform apply
@@ -30,11 +30,11 @@ terraform apply
 git clone https://github.com/Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
-# Prepare and edit .env file (set BUCKET_NAME, ROUTE53_ZONEID, ROUTE53_FQDN, LAMBDA_STOP_URL, RCON_PASSWORD)
+# Prepare and edit .env file
 cp .env.example .env
 vi .env
 
-# Set up EC2
+# Set up Linux
 ./.linux/setup.sh
 
 # Set up server
@@ -45,10 +45,14 @@ sudo make setup
 sudo vi ./plugins/DiscordSRV/config.yml
 sudo vi ./plugins/DiscordSRV/messages.yml
 
+# Edit the MOTD settings and upload a server icon
+sudo vi ./plugins/MOTD/config.yml
+mv server-icon.png ./plugins/MOTD/server icon/server-icon.png
+
 # Start server
 sudo make up
 
-# Add Players to Whitelist
+# Add players to whitelist
 sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist add <PLAYER_NAME>"
 
 # Edit Nginx configuration files (set FQDN)
@@ -87,7 +91,7 @@ sudo make down
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
 cd MinecraftGeyserServer
 
-# Prepare and edit .env file (set KEY_PATH, IP_ADDRESS)
+# Prepare and edit .env file
 cp .env.example .env
 vi .env
 
