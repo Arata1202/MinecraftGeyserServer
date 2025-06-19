@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-### Create Resources on AWS EC2 with Terraform（Local）
+### Create Resources on AWS with Terraform（Local Required）
 
 ```bash
 # Clone repository
@@ -23,7 +23,7 @@ terraform plan
 terraform apply
 ```
 
-### Setup Minecraft Server（EC2）
+### Set Up Minecraft Server (EC2 Required)
 
 ```bash
 # Clone repository
@@ -47,7 +47,7 @@ sudo make up
 sudo make down
 ```
 
-### Configure Nginx and Obtain SSL Certificate（EC2）
+### Configure Nginx and Obtain SSL Certificate for Dynmap（EC2 Optional）
 
 ```bash
 # Start server
@@ -75,7 +75,7 @@ sudo docker compose exec nginx htpasswd -c /etc/nginx/.htpasswd <YOUR_USER_NAME>
 sudo docker compose exec nginx nginx -s reload
 ```
 
-### Configure Personal Plugins（EC2）
+### Configure Personal Minecraft Server Plugins（EC2 Optional）
 
 ```bash
 # Stop server
@@ -97,7 +97,7 @@ sudo vi ./plugins/DeathChest/config.yml
 sudo make up
 ```
 
-### Manage Whitelist（EC2）
+### Manage Minecraft Server Whitelist（EC2 Optional）
 
 ```bash
 # Start server
@@ -116,7 +116,7 @@ sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWOR
 sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist list"
 ```
 
-### Setup Scheduled Tasks（EC2）
+### Set Up Scheduled Tasks（EC2 Optional）
 
 ```bash
 # Create log file
@@ -126,7 +126,7 @@ touch logs/cron.log
 ( sudo crontab -l 2>/dev/null; echo "*/10 * * * * /home/ubuntu/MinecraftGeyserServer/.bin/cron.sh >> /home/ubuntu/MinecraftGeyserServer/logs/cron.log 2>&1" ) | sudo crontab -
 ```
 
-### Upload Existing World（Local）
+### Upload Existing World（Local Optional）
 
 ```bash
 # Clone repository
@@ -146,7 +146,7 @@ mv <path/to/your/world_the_end> uploads/
 make upload
 ```
 
-### Maintenance（EC2）
+### EC2 Server Maintenance（EC2 Optional）
 
 ```bash
 # Check EBS disk usage
