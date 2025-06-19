@@ -46,7 +46,6 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || \
 
     # server.properties
     sed -i 's/enforce-secure-profile=true/enforce-secure-profile=false/' "server.properties"
-    sed -i 's/white-list=false/white-list=true/' "server.properties"
     echo 'enable-rcon=true' >> "server.properties"
     echo 'rcon.port=25575' >> "server.properties"
     echo "rcon.password=${RCON_PASSWORD}" >> server.properties

@@ -55,9 +55,6 @@ sudo vi ./plugins/DeathChest/config.yml
 # Start server
 sudo make up
 
-# Add players to whitelist
-sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist add <PLAYER_NAME>"
-
 # Edit Nginx configuration files (set FQDN)
 vi ./.docker/nginx/default.conf
 vi ./.docker/nginx/ssl_server.conf.txt
@@ -85,6 +82,22 @@ touch logs/cron.log
 
 # Stop server
 sudo make down
+```
+
+### Manage Whitelist
+
+```bash
+# Enable whitelist in server.properties
+sed -i 's/white-list=false/white-list=true/' "server.properties"
+
+# Add players to whitelist
+sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist add <PLAYER_NAME>"
+
+# Remove players from whitelist
+sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist remove <PLAYER_NAME>"
+
+# Show the list of whitelisted players
+sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist list"
 ```
 
 ### Upload Existing World
