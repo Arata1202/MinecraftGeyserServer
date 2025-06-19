@@ -68,7 +68,17 @@ sudo docker compose run --rm certbot certonly --webroot -w /var/www/html -d <YOU
 mv ./.docker/nginx/default.conf ./.docker/nginx/ssl_server.conf.txt
 mv ./.docker/nginx/default.conf.txt ./.docker/nginx/default.conf
 
-# 【Optional】Create a new .htpasswd file and add a user for Basic Authentication
+# Reload Nginx
+sudo docker compose exec nginx nginx -s reload
+```
+
+### Set Up Basic Authentication for Nginx（EC2 Optional）
+
+```bash
+# Start server
+sudo make up
+
+# Create a new .htpasswd file and add a user for Basic Authentication
 sudo docker compose exec nginx htpasswd -c /etc/nginx/.htpasswd <YOUR_USER_NAME>
 
 # Reload Nginx
