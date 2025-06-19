@@ -85,28 +85,6 @@ sudo docker compose exec nginx htpasswd -c /etc/nginx/.htpasswd <YOUR_USER_NAME>
 sudo docker compose exec nginx nginx -s reload
 ```
 
-### Configure Personal Minecraft Server Plugins（EC2 Optional）
-
-```bash
-# Stop server
-sudo make down
-
-# Edit the DiscordSRV configuration (set BotToken, Channels, DiscordConsoleChannelId, DiscordInviteLink)
-# https://github.com/DiscordSRV/DiscordSRV/tree/master/src/main/resources/messages
-sudo vi ./plugins/DiscordSRV/config.yml
-sudo vi ./plugins/DiscordSRV/messages.yml
-
-# Edit the MOTD configuration and upload a server icon
-sudo vi ./plugins/MOTD/config.yml
-mv <path/to/your/server-icon.png> ./plugins/MOTD/server icon/server-icon.png
-
-# Edit the DeathChest configuration
-sudo vi ./plugins/DeathChest/config.yml
-
-# Start server
-sudo make up
-```
-
 ### Manage Minecraft Server Whitelist（EC2 Optional）
 
 ```bash
@@ -132,7 +110,7 @@ sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWOR
 # Create log file
 touch logs/cron.log
 
-# Edit Crontab
+# Edit crontab
 ( sudo crontab -l 2>/dev/null; echo "*/10 * * * * /home/ubuntu/MinecraftGeyserServer/.bin/cron.sh >> /home/ubuntu/MinecraftGeyserServer/logs/cron.log 2>&1" ) | sudo crontab -
 ```
 
