@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-### Create Resources on AWS EC2 with Terraform
+### Create Resources on AWS EC2 with Terraform（Local）
 
 ```bash
 # Clone repository
@@ -23,7 +23,7 @@ terraform plan
 terraform apply
 ```
 
-### Setup on AWS EC2
+### Setup Minecraft Server（EC2）
 
 ```bash
 # Clone repository
@@ -47,9 +47,12 @@ sudo make up
 sudo make down
 ```
 
-### Configure Nginx and Obtain SSL Certificate
+### Configure Nginx and Obtain SSL Certificate（EC2）
 
 ```bash
+# Start server
+sudo make up
+
 # Edit Nginx configuration files (set FQDN)
 vi ./.docker/nginx/default.conf
 vi ./.docker/nginx/ssl_server.conf.txt
@@ -72,9 +75,12 @@ sudo docker compose exec nginx htpasswd -c /etc/nginx/.htpasswd <YOUR_USER_NAME>
 sudo docker compose exec nginx nginx -s reload
 ```
 
-### Configure Personal Plugins
+### Configure Personal Plugins（EC2）
 
 ```bash
+# Stop server
+sudo make down
+
 # Edit the DiscordSRV configuration (set BotToken, Channels, DiscordConsoleChannelId, DiscordInviteLink)
 # https://github.com/DiscordSRV/DiscordSRV/tree/master/src/main/resources/messages
 sudo vi ./plugins/DiscordSRV/config.yml
@@ -86,11 +92,17 @@ mv <path/to/your/server-icon.png> ./plugins/MOTD/server icon/server-icon.png
 
 # Edit the DeathChest configuration
 sudo vi ./plugins/DeathChest/config.yml
+
+# Start server
+sudo make up
 ```
 
-### Manage Whitelist
+### Manage Whitelist（EC2）
 
 ```bash
+# Start server
+sudo make up
+
 # Enable whitelist in server.properties
 sed -i 's/white-list=false/white-list=true/' "server.properties"
 
@@ -104,7 +116,7 @@ sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWOR
 sudo docker compose exec minecraft mcrcon -H 127.0.0.1 -P 25575 -p <RCON_PASSWORD> "whitelist list"
 ```
 
-### Setup Scheduled Tasks
+### Setup Scheduled Tasks（EC2）
 
 ```bash
 # Create log file
@@ -114,7 +126,7 @@ touch logs/cron.log
 ( sudo crontab -l 2>/dev/null; echo "*/10 * * * * /home/ubuntu/MinecraftGeyserServer/.bin/cron.sh >> /home/ubuntu/MinecraftGeyserServer/logs/cron.log 2>&1" ) | sudo crontab -
 ```
 
-### Upload Existing World
+### Upload Existing World（Local）
 
 ```bash
 # Clone repository
@@ -134,7 +146,7 @@ mv <path/to/your/world_the_end> uploads/
 make upload
 ```
 
-### Maintenance
+### Maintenance（EC2）
 
 ```bash
 # Check EBS disk usage
