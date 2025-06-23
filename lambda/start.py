@@ -118,4 +118,4 @@ def lambda_handler(event, context):
 
     urllib.request.urlopen(req)
 
-    return {"status": result['Status']}
+    return {"status": state}
