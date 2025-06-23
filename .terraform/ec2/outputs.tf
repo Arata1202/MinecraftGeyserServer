@@ -1,5 +1,5 @@
 output "iam_role_name" {
-  value = aws_iam_role.minecraft_s3_role.name
+  value = aws_iam_role.minecraft_ec2_role.name
 }
 
 output "instance_id" {
