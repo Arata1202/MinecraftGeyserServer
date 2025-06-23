@@ -40,3 +40,10 @@ module "route53" {
   hosted_zone_id = var.hosted_zone_id
   iam_role_name  = module.ec2.iam_role_name
 }
+
+module "iam" {
+  source = "./iam"
+
+  s3_bucket_name  = var.bucket_name
+  route53_zone_id = var.hosted_zone_id
+}

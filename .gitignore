@@ -41,6 +41,7 @@
 !ec2.tf
 !eip.tf
 !sg.tf
+!iam/
 !lambda/
 !start.tf
 !stop.tf
