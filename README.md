@@ -47,7 +47,7 @@ sudo make up
 sudo make down
 ```
 
-### Configure Nginx and Obtain SSL Certificate for Dynmap（EC2）
+### Configure Nginx and Obtain SSL Certificate for Bluemap（EC2）
 
 ```bash
 # Start server
