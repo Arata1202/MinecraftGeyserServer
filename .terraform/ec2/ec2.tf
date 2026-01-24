@@ -7,8 +7,11 @@ resource "aws_instance" "minecraft_server" {
   iam_instance_profile   = aws_iam_instance_profile.minecraft_instance_profile.name
 
   root_block_device {
-    volume_type = var.volume_type
-    volume_size = var.volume_size
+    volume_type           = var.volume_type
+    volume_size           = var.volume_size
+    encrypted             = var.volume_encrypted
+    kms_key_id            = var.volume_kms_key_id
+    delete_on_termination = false
   }
 
   tags = {

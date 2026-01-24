@@ -31,10 +31,12 @@
 !.linux/
 !setup.sh
 
+.terraform/*
 !.terraform/
+.terraform/.terraform/
 !iam.tf
 !outputs.tf
-!variables.example.tf
+!.terraform/variables.tf.example
 !main.tf
 !module.tf
 !ec2/
