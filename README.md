@@ -54,19 +54,19 @@ sudo make down
 sudo make up
 
 # Edit Nginx configuration files (set FQDN)
-vi ./.docker/nginx/default.conf
-vi ./.docker/nginx/ssl_server.conf.txt
+vi ./docker/nginx/default.conf
+vi ./docker/nginx/ssl_server.conf.txt
 
 # Switch to HTTP config temporarily for Let's Encrypt certificate issuance
-mv ./.docker/nginx/default.conf ./.docker/nginx/default.conf.txt
-mv ./.docker/nginx/ssl_server.conf.txt ./.docker/nginx/default.conf
+mv ./docker/nginx/default.conf ./docker/nginx/default.conf.txt
+mv ./docker/nginx/ssl_server.conf.txt ./docker/nginx/default.conf
 
 # Obtain SSL certificate with Let's Encrypt
 sudo docker compose run --rm certbot certonly --webroot -w /var/www/html -d <YOUR_FQDN>
 
 # Revert back to HTTPS (SSL-enabled) Nginx configuration
-mv ./.docker/nginx/default.conf ./.docker/nginx/ssl_server.conf.txt
-mv ./.docker/nginx/default.conf.txt ./.docker/nginx/default.conf
+mv ./docker/nginx/default.conf ./docker/nginx/ssl_server.conf.txt
+mv ./docker/nginx/default.conf.txt ./docker/nginx/default.conf
 
 # Reload Nginx
 sudo docker compose exec nginx nginx -s reload

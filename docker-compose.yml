@@ -4,7 +4,7 @@ services:
     container_name: minecraft
     build:
       context: .
-      dockerfile: ./.docker/minecraft/Dockerfile
+      dockerfile: ./docker/minecraft/Dockerfile
     volumes:
       - ./:/server
     working_dir: '/server'
@@ -22,7 +22,7 @@ services:
     container_name: backup
     build:
       context: .
-      dockerfile: ./.docker/backup/Dockerfile
+      dockerfile: ./docker/backup/Dockerfile
     volumes:
       - ./world:/backup/world
       - ./world_nether:/backup/world_nether
@@ -36,7 +36,7 @@ services:
     container_name: route53
     build:
       context: .
-      dockerfile: ./.docker/route53/Dockerfile
+      dockerfile: ./docker/route53/Dockerfile
     volumes:
       - ./.env:/route53/.env
     working_dir: '/route53'
@@ -47,7 +47,7 @@ services:
     container_name: batch
     build:
       context: .
-      dockerfile: ./.docker/batch/Dockerfile
+      dockerfile: ./docker/batch/Dockerfile
     volumes:
       - ./logs:/batch/logs
     working_dir: '/batch'
@@ -58,9 +58,9 @@ services:
     container_name: nginx
     build:
       context: .
-      dockerfile: ./.docker/nginx/Dockerfile
+      dockerfile: ./docker/nginx/Dockerfile
     volumes:
-      - ./.docker/nginx:/etc/nginx/conf.d
+      - ./docker/nginx:/etc/nginx/conf.d
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
       - ./.htpasswd:/etc/nginx/.htpasswd
@@ -76,7 +76,7 @@ services:
     container_name: certbot
     build:
       context: .
-      dockerfile: ./.docker/certbot/Dockerfile
+      dockerfile: ./docker/certbot/Dockerfile
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
