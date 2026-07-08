@@ -3,11 +3,11 @@ setup:
 
 up:
 	@docker compose run --rm route53
-	.bin/update.sh
+	scripts/update.sh
 	@docker compose up -d minecraft nginx
 
 down:
-	.bin/stop.sh
+	scripts/stop.sh
 	@docker compose run --rm backup
 	@docker compose run --rm certbot renew
 	@docker compose down
@@ -25,15 +25,15 @@ route53:
 	@docker compose run --rm route53
 
 cron:
-	.bin/cron.sh
+	scripts/cron.sh
 
 stop:
-	.bin/stop.sh
+	scripts/stop.sh
 
 update:
-	.bin/update.sh
+	scripts/update.sh
 
 upload:
-	.bin/upload.sh
+	scripts/upload.sh
 
 .PHONY: setup up down backup batch certbot route53 cron stop update upload

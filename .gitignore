@@ -8,7 +8,7 @@
 !Makefile
 !README.md
 
-!.bin/
+!scripts/
 !cron.sh
 !stop.sh
 !update.sh
