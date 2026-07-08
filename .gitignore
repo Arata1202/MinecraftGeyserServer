@@ -28,7 +28,7 @@
 !ssl_server.conf.txt
 !route53/
 
-!.linux/
+!ubuntu/
 !setup.sh
 
 .terraform/*
