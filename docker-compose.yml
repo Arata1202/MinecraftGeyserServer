@@ -9,8 +9,8 @@ services:
       - ./:/server
     working_dir: '/server'
     ports:
-      - "25565:25565/tcp"
-      - "19132:19132/udp"
+      - "127.0.0.1:25565:25565/tcp"
+      - "127.0.0.1:19132:19132/udp"
     env_file:
       - .env
     networks:
