@@ -3,7 +3,7 @@ ENV TZ=UTC
 
 RUN apk add --no-cache apache2-utils
 
-COPY ./.docker/nginx /etc/nginx/conf.d
+COPY ./docker/nginx /etc/nginx/conf.d
 
 EXPOSE 80
 

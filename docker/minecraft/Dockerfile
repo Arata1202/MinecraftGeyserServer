@@ -12,13 +12,13 @@ RUN git clone https://github.com/Tiiffi/mcrcon.git && \
 
 COPY . .
 
-RUN chmod +x ./.docker/minecraft/entrypoint.sh
-RUN chmod +x ./.docker/minecraft/cmd.sh
+RUN chmod +x ./docker/minecraft/entrypoint.sh
+RUN chmod +x ./docker/minecraft/cmd.sh
 
 EXPOSE 19132
 EXPOSE 25565
 EXPOSE 25575
 EXPOSE 8123
 
-ENTRYPOINT ["./.docker/minecraft/entrypoint.sh"]
-CMD ["./.docker/minecraft/cmd.sh"]
+ENTRYPOINT ["./docker/minecraft/entrypoint.sh"]
+CMD ["./docker/minecraft/cmd.sh"]
