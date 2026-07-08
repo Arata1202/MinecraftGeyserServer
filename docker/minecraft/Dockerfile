@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21-jdk
+FROM eclipse-temurin:25-jdk
 
 WORKDIR /server
 
@@ -17,8 +17,5 @@ RUN chmod +x ./docker/minecraft/cmd.sh
 
 EXPOSE 19132
 EXPOSE 25565
-EXPOSE 25575
-EXPOSE 8123
-
 ENTRYPOINT ["./docker/minecraft/entrypoint.sh"]
 CMD ["./docker/minecraft/cmd.sh"]

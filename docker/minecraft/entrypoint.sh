@@ -61,4 +61,12 @@ if [ ! -f "./plugins/Geyser-Spigot.jar" ] || \
     sed -i 's/japanizeType: none/japanizeType: GoogleIME/' "plugins/LunaChat/config.yml"
 fi
 
+mkdir -p ./plugins
+cp ./jar/Paper.jar ./Paper.jar
+for file in ./jar/*.jar; do
+    if [[ $(basename "$file") != "Paper.jar" ]]; then
+        cp "$file" ./plugins/
+    fi
+done
+
 exec "$@"
