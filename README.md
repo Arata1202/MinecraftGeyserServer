@@ -11,11 +11,11 @@
 ```bash
 # Clone repository
 git clone git@github.com:Arata1202/MinecraftGeyserServer.git
-cd MinecraftGeyserServer/.terraform
+cd MinecraftGeyserServer/terraform
 
-# Prepare and edit variables file
-mv variables.example.tf variables.tf
-vi variables.tf
+# Prepare and edit tfvars file
+cp terraform.tfvars.example terraform.tfvars
+vi terraform.tfvars
 
 # Create resources
 terraform init

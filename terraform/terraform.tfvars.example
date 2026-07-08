@@ -1,0 +1,13 @@
+region = "ap-northeast-1"
+ami = "ami-026c39f4021df9abe" # x86_64
+# ami = "ami-038e94aea55c0f480" # arm64
+instance_type = "c7i.xlarge"
+key_name      = "minecraft_key"
+volume_type       = "gp3"
+volume_size       = 20
+volume_encrypted  = true
+volume_kms_key_id = null
+bucket_name = "minecraft_s3"
+instance_id         = "i-xxxxxxxxxxxxxxxxxx"
+discord_webhook_url = "https://discord.com/api/webhooks/xxx/yyy"
+hosted_zone_id = "xxxxxxxxxx"
